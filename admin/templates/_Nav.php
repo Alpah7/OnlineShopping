@@ -21,14 +21,18 @@
         <li <?php if ($admin->alert_notif() > 0): ?> class="bg-danger" <?php else: ?> class="" <?php endif ?> >
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-bell-o"></i> Notifications <span class="sr-only">(current)</span>
-            <sup class="badge"><?= $admin->alert_notif() ?></sup>
+            <?php if ($admin->alert_notif() > 0): ?> <sup class="badge"><?= $admin->alert_notif() ?></sup> <?php else: ?>  <?php endif ?>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#"><i class="fa fa-trash"></i> Clear Notifications</a></li>
+          <?php if ($admin->alert_notif() > 0): ?>
+            <?php foreach ($notif as $data): ?>
+
+            <li><a href="javascript:;" data-idUser="<?= $data['id_user'] ?>" class="change-status"><i class="fa fa-user"></i> <?= $data['email'] ?></a></li>
+
+            <?php endforeach ?>
+          <?php else: ?>
+            <li class="text-center"><a href="#">Notifications is Empty</a></li>
+          <?php endif ?>
           </ul>
         </li>
         <li class="dropdown">

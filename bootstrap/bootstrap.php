@@ -2,6 +2,7 @@
 
 require_once 'actions/core.php';
 require_once 'classes/Database.php';
+require_once 'classes/AdminNotifications.php';
 require_once 'classes/Products.php';
 require_once 'classes/Categories.php';
 require_once 'classes/Generators.php';

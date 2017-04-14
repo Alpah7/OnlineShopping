@@ -55,7 +55,7 @@
 					  	</tr>
 					  	<tr>
 					  		<td colspan="4" align="right">Total Shipping :</td>
-					  		<td><?= $generator->IDR((int)($cart->discount($billing[0]['total_price']))) ?></td>
+					  		<td><?= $generator->IDR((int)($cart->cart_rules($_SESSION['billing'], $billing[0]['total_price']))) ?></td>
 					  		<td colspan="2">&nbsp;</td>
 					  	</tr>
 					</tbody>

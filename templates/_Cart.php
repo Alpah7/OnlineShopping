@@ -83,7 +83,7 @@
 		  	</tr>
 		  	<tr>
 		  		<th>Total Shipping</th>
-		  		<td>: <?= $generator->IDR((int)($cart->discount($cart->total_price_cart($_SESSION['users'])))) ?></td>
+		  		<td>: <?= $generator->IDR((int)($cart->cart_rules($_SESSION['users'], $cart->total_price_cart($_SESSION['users'])))) ?></td>
 		  	</tr>
 		  </table>
 		  </div>

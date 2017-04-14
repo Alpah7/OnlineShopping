@@ -28,12 +28,24 @@ $sqlmember  = $runsql->fetch_assoc();
             <input type="text" id="username" name="username" value="<?= $data['username'] ?>" class="form-control" required>
         </div>
         <div class="form-group">
-            <label>Firstname</label>
+            <div class="form-inline">
+            <label>Firstname &amp; Lastname</label><br>
             <input type="text" id="firstname" name="firstname" value="<?= $data['firstname'] ?>" class="form-control" required>
+            <input type="text" id="lastname" name="lastname" value="<?= $data['lastname'] ?>" class="form-control" required>
+            </div>
         </div>
         <div class="form-group">
-            <label>Lastname</label>
-            <input type="text" id="lastname" name="lastname" value="<?= $data['lastname'] ?>" class="form-control" required>
+            <label>Status</label>
+            <select id="status" name="status" class="form-control" required>
+                <option value="">-- Status --</option>
+                <?php if ($data['status'] == 0) { ?>
+                <option value="0" selected>Not Active</option>
+                <option value="1">Active</option>
+                <?php }else { ?>
+                <option value="0">Not Active</option>
+                <option value="1" selected>Active</option>
+                <?php } ?>
+            </select>
         </div>
     </div>
     <div class="col-md-6">
@@ -60,7 +72,7 @@ $sqlmember  = $runsql->fetch_assoc();
         </div>
         <div class="form-group">
             <label>Zip Code &amp; Phone Number</label>
-            <div class=" form-inline">
+            <div class="form-inline">
                 <input style="width:20%;" type="text" id="zip_code" name="zip_code" value="<?= $data['zip_code'] ?>" class="form-control" required>
                 <input style="width:75%;" type="tel" id="phone" name="phone" value="<?= $data['phone'] ?>" class="form-control" required>
             </div>

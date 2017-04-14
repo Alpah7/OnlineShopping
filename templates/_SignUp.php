@@ -37,6 +37,9 @@
           <option value="1">Free Member</option>
           <option value="2">Premium Member</option>
         </select>
+        <div class="help-block">
+          <p><i class="glyphicon glyphicon-info-sign"></i> If you register as Member Premium, please wait to activated your account.</p>
+        </div>
       </div>
     </div>
     <div class="col-md-6">

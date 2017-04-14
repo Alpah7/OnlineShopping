@@ -121,8 +121,9 @@ class Users extends Database
 			$address = $data['address'];
 			$zip_code = $data['zip_code'];
 			$phone = $data['phone'];
+			$status = $data['status'];
 
-			$query = "UPDATE `users` SET `username`='".$username."',`firstname`='".$firstname."',`lastname`='".$lastname."',`address`='".$address."',`zip_code`='".$zip_code."',`phone`='".$phone."',`email`='".$email."',`id_member`='".$id_member."' WHERE `id_user`='".$id_user."'";
+			$query = "UPDATE `users` SET `username`='".$username."',`firstname`='".$firstname."',`lastname`='".$lastname."',`address`='".$address."',`zip_code`='".$zip_code."',`phone`='".$phone."',`email`='".$email."',`id_member`='".$id_member."',`status`='".$status."' WHERE `id_user`='".$id_user."'";
 			$update = $this->db->query($query);
 
 			return $update;

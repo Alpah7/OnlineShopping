@@ -23,7 +23,8 @@ if (isset($_POST['editUser'])) {
 	    "email" => $_POST['email'],
 	    "address" => $_POST['address'],
 	    "zip_code" => $_POST['zip_code'],
-	    "phone" => $_POST['phone']
+	    "phone" => $_POST['phone'],
+	    "status" => $_POST['status']
 	);
 
 	$update = $user->update_user($data);

@@ -24,6 +24,7 @@ $cart 		= new Cart();
 /* Admin Private Initialized */
 
 $admin = new AdminNotifications();
+$notif = $admin->get_user_notifications();
 
 /* ========================= */
 

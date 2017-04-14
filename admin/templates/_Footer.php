@@ -11,6 +11,17 @@
 		$("#table_user").DataTable();
 		$("#table_products").DataTable();
 		$("#table_categories").DataTable();
+
+		$(".change-status").on('click',function(event) {
+			event.preventDefault();
+
+				$.get('detail_user.php?id_user='+$(this).attr('data-idUser'), function(data) {
+					 $(".modal-body").html(data);
+				});
+				
+				$("#modalEdit").modal('show');
+
+		});
        
 		$("#table_user").on('click', '.edit-data' ,function(event) {
 			event.preventDefault();

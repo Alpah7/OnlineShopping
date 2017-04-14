@@ -16,7 +16,7 @@ class AdminNotifications extends Database {
 
 	}
 
-	private function get_user_notifications(){
+	public function get_user_notifications(){
 
 		$query = "SELECT * FROM users WHERE status=0";
 		$sql = $this->db->query($query);
