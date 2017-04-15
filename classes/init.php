@@ -26,6 +26,9 @@ $cart 		= new Cart();
 $admin = new AdminNotifications();
 $notif = $admin->get_user_notifications();
 
+$orders = new Orders();
+$orders_data = $orders->get_data_order();
+
 /* ========================= */
 
 if (!__SHOP__) {

@@ -1,5 +1,18 @@
 <div class="container">
 	<h2><a href="cart.php"><i class="fa fa-arrow-circle-left small"></i></a> Checkout</h2>
+
+	<?php if (isset($_GET['success'])) { ?>
+	   <div class="alert alert-success alert-dismissible" role="alert">
+	    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	    <strong>Woow!</strong> <?= $_GET['success']; ?>
+	  </div>
+	 <?php }elseif (isset($_GET['error'])){ ?>
+	  <div class="alert alert-danger alert-dismissible" role="alert">
+	    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	    <strong>Oops!</strong> <?= $_GET['error']; ?>
+	  </div>
+	 <?php } ?>
+
 	<div class="row">
 	<div class="col-md-3 text-center">
 	<img src="http://localhost/oop-shopping-cart/libraries/qrcode.php?text=<?= $generator->orderID() ?>">

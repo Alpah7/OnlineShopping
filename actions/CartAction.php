@@ -68,7 +68,8 @@ if (isset($_POST['amount'])) {
 		"amount" => $_POST['amount'],
 		"id_user" => $_POST['id_user'],
 		"cart_count" => $_POST['cart_count'],
-		"total_price" => $_POST['total_price']
+		"tax" => ($_POST['total_price']*0.03),
+		"total_price" => ($_POST['total_price'] + ($_POST['total_price']*0.03))
 	);
 
 	$user_checkout = $cart->user_checkout($data);
@@ -80,7 +81,7 @@ if (isset($_POST['amount'])) {
 		
 		header('Location: http://localhost/oop-shopping-cart/member/print_billing.php');
 	}else{
-		header('Location: http://localhost/oop-shopping-cart/member/chekout.php');
+		header('Location: http://localhost/oop-shopping-cart/member/chekout.php?error=' . urlencode('Account Number not define!'));
 	}
 	
 }
