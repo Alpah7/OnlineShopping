@@ -16,6 +16,13 @@
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-info-sign"></i> How To? <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <li><a href="how-to-order-item.php">Order Items</a></li>
+              <li><a href="how-to-transaction.php">Transaction</a></li>
+              <li><a href="how-to-check-order-process.php">Check Order Process</a></li>
+            </ul>
+          </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Others <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -24,6 +31,7 @@
               <li><a href="#">Hot Sales</a></li>
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">Utitlities</li>
+              <li><a href="payment.php">Order Payment</a></li>
               <li><a href="#">Check Order ID</a></li>
               <li class="disabled"><a href="javascript:;">QrCode Payment System</a></li>
             </ul>
@@ -70,7 +78,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= ucfirst($_SESSION['firstname']) ?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Profile</a></li>
+            <li><a href="profile.php">Profile</a></li>
             <li><a href="#">Change password</a></li>
             <li><a href="#">Change Image Profile</a></li>
             <li role="separator" class="divider"></li>
@@ -79,7 +87,7 @@
         </li>
     </ul>
     <?php }else{ ?>
-      <div id="navbar" class="navbar-collapse collapse">
+      <div id="navbar" class="navbar-collapse collapse small">
       <form class="navbar-form navbar-right" method="POST" action="<?= __ACT__ ?>Login.php">
         <div class="form-group">
           <input type="email" placeholder="Email" class="form-control" name="email">

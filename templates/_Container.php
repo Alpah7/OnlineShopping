@@ -18,9 +18,4 @@
     </ul>
   </nav>
 
-  <hr>
-
-  <footer>
-    <p>&copy; Betta Shop <?= date('Y') ?></p>
-  </footer>
-</div> <!-- /container -->
+</div>

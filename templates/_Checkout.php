@@ -29,10 +29,6 @@
 				<input type="text" name="name_of_account" placeholder="Account Name" class="form-control" required>
 			</div>
 			<div class="form-group">
-				<label for="no_rekening">Account Number</label>
-				<input type="text" name="no_rekening" placeholder="Account Number" class="form-control" required>
-			</div>
-			<div class="form-group">
 				<label for="amount">Amount</label><br>
 				<?php if ($_SESSION['scopes'] == 'member/'): ?>
 					
@@ -44,10 +40,10 @@
 			<div class="help-block">
 				<p><i class="glyphicon glyphicon-info-sign"></i> Become member and get low tax in every transaction.</p>
 			</div>
-			<input type="hidden" name="amount" value="<?= $_SESSION['total_shipping'] ?>">
+			<input type="hidden" name="amount" value="<?= $_SESSION['total_price'] ?>">
 			<input type="hidden" name="id_order" value="<?= $generator->orderID() ?>">
 			<input type="hidden" name="id_user" value="<?= $_SESSION['id_user'] ?>">
-			<input type="hidden" name="total_price" value="<?= $_SESSION['total_price'] ?>">
+			<input type="hidden" name="total_price" value="<?= $_SESSION['total_shipping'] ?>">
 			<input type="hidden" name="cart_count" value="<?= $cart->cart_count($_SESSION['id_user']) ?>">
 			<button type="submit" class="btn btn-block btn-primary"><i class="fa fa-handshake-o"></i> Order</button>
 		</form>

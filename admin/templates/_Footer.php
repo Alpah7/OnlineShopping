@@ -4,9 +4,23 @@
 <script src="<?= __SHOP__ ?>admin/libs/js/raphael-min.js"></script>
 <!-- <script src="<?= __SHOP__ ?>admin/libs/js/jquery-1.8.2.min.js"></script> -->
 <script src="<?= __SHOP__ ?>admin/libs/js/morris-0.4.1.min.js"></script>
+<script src="<?= __SHOP__ ?>admin/libs/js/bootstrap-toggle.min.js"></script>
 
 <script>
 	$(document).ready(function(){
+
+		$("#table_order").on('change', '#update_process', function(event) {
+			event.preventDefault();
+
+			var idOrder = $(this).attr('data-update');
+
+			$.get('update_status.php?idOrder='+$(this).attr('data-update'), function(data) {
+				console.log('Data ' + data + ' Successfully updated!');
+			});
+			
+			return false;
+
+		});
 
 		$("#table_user").DataTable();
 		$("#table_products").DataTable();

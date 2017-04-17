@@ -27,6 +27,7 @@ $admin = new AdminNotifications();
 $notif = $admin->get_user_notifications();
 
 $orders = new Orders();
+$scheduler = $orders->delete_scheduler();
 $orders_data = $orders->get_data_order();
 
 /* ========================= */

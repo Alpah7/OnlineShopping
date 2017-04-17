@@ -94,7 +94,7 @@
 		  		<form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST">
 					<input type="hidden" name="id_user" value="<?= $_SESSION['users'] ?>">
 					<input type="hidden" name="total_price" value="<?= $cart->total_price_cart($_SESSION['users']) ?>">
-					<input type="hidden" name="total_shipping" value="<?= $cart->discount($cart->total_price_cart($_SESSION['users'])) ?>">
+					<input type="hidden" name="total_shipping" value="<?= $cart->cart_rules($_SESSION['users'], $cart->total_price_cart($_SESSION['users'])) ?>">
 		  			<button class="btn btn-primary btn-block"><i class="fa fa-check-square"></i> Checkout</button>
 		  		</form>
 		  	<?php endif; ?>

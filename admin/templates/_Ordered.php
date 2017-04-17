@@ -3,18 +3,18 @@
     <h2>Bussines Order</h2>
     <hr>
 
-	<table class="table table-bordered table-hover table-striped">
+	<table id="table_order" class="table table-bordered table-hover table-striped">
 		<thead>
 			<tr>
-				<th rowspan="2">ORDER ID</th>
-				<th rowspan="2">Product Name</th>
-				<th rowspan="2">Qty</th>
-				<th rowspan="2">Size</th>
-				<th colspan="2">Account</th>
-				<th rowspan="2">Amount</th>
-				<th rowspan="2">Tax</th>
-				<th rowspan="2">Total Shipping</th>
-				<th rowspan="2">Order Status</th>
+				<th rowspan="2" class="text-center">ORDER ID</th>
+				<th rowspan="2" class="text-center">Product Name</th>
+				<th rowspan="2" class="text-center">Qty</th>
+				<th rowspan="2" class="text-center">Size</th>
+				<th colspan="2" class="text-center">Account</th>
+				<th rowspan="2" class="text-center">Amount</th>
+				<th rowspan="2" class="text-center">Tax</th>
+				<th rowspan="2" class="text-center">Total Shipping</th>
+				<th rowspan="2" class="text-center">Order Status</th>
 			</tr>
 			<tr>
 				<th>Name</th>
@@ -29,12 +29,14 @@
 				<td><?= $data['O_PRODUCT'] ?></td>
 				<td><?= $data['O_QTY'] ?></td>
 				<td><?= $data['O_SIZE'] ?></td>
-				<td><?= $data['O_ACCOUNT_NAME'] ?></td>
-				<td><?= $data['O_ACCOUNT_NUMBER'] ?></td>
+				<td><?= ucwords($data['O_ACCOUNT_NAME']) ?></td>
+				<td>&nbsp;</td>
 				<td><?= $generator->IDR($data['O_AMOUNT']) ?></td>
 				<td><?= $generator->IDR($data['O_TAX']) ?></td>
 				<td><?= $generator->IDR($data['O_TOTAL_PRICE']) ?></td>
-				<td><?= $status = ($data['O_STATUS'] == 0) ? 'Pending...' : 'Ordered'; ?></td>
+				<td>
+					<input <?php if ($data['O_STATUS'] == 0): ?> checked <?php else: ?>  <?php endif ?> data-toggle="toggle" data-on="Pending" data-off="Process" data-onstyle="danger" data-offstyle="success" data-size="mini" type="checkbox" id="update_process" data-update="<?= $data['O_ID_ORDER'] ?>">
+				</td>
 			</tr>
 		<?php endforeach ?>
 		<?php else: ?>
@@ -44,5 +46,7 @@
 		<?php endif ?>
 		</tbody>
 	</table>
+
+	
 		
 </div>

@@ -4,31 +4,31 @@ class Generators extends Database{
 
 	public function userID(){
 
-		$query = "SELECT * FROM users";
+		$query = "SELECT MAX(CAST(REPLACE(SUBSTR(id_user, -2), '-','') AS UNSIGNED)) AS NEW_ID FROM users";
 		$sql = $this->db->query($query);
-		$rows = mysqli_num_rows($sql);
+		$last_id = $sql->fetch_assoc();
 
-		return "USR-".date('md').'-'.date('y').'-'.($rows+1);
+		return "USR-".date('md').'-'.date('y').'-'. ($last_id['NEW_ID']+1);
 
 	}
 
 	public function productID(){
 
-		$query = "SELECT * FROM products";
+		$query = "SELECT MAX(CAST(REPLACE(SUBSTR(id_product, -2), '-','') AS UNSIGNED)) AS NEW_ID FROM products";
 		$sql = $this->db->query($query);
-		$rows = mysqli_num_rows($sql);
+		$last_id = $sql->fetch_assoc();
 
-		return "PRD-".date('md').'-'.date('y').'-'.($rows+1);
+		return "PRD-".date('md').'-'.date('y').'-'.($last_id['NEW_ID']+1);
 
 	}
 
 	public function orderID(){
 
-		$query = "SELECT * FROM order_product";
+		$query = "SELECT MAX(CAST(REPLACE(SUBSTR(id_order, -2), '-','') AS UNSIGNED)) AS NEW_ID FROM order_product";
 		$sql = $this->db->query($query);
-		$rows = mysqli_num_rows($sql);
+		$last_id = $sql->fetch_assoc();
 
-		return "ORD-".date('md').'-'.date('y').'-'.($rows+1);
+		return "ORD-".date('md').'-'.date('y').'-'.($last_id['NEW_ID']+1);
 
 	}
 

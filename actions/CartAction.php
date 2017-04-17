@@ -64,12 +64,11 @@ if (isset($_POST['amount'])) {
 	$data = array(
 		"id_order" => $_POST['id_order'],
 		"name_of_account" => $_POST['name_of_account'],
-		"no_rekening" => $_POST['no_rekening'],
 		"amount" => $_POST['amount'],
 		"id_user" => $_POST['id_user'],
 		"cart_count" => $_POST['cart_count'],
-		"tax" => ($_POST['total_price']*0.03),
-		"total_price" => ($_POST['total_price'] + ($_POST['total_price']*0.03))
+		"tax" => ($_POST['amount']*0.03),
+		"total_price" => $cart->cart_rules($_POST['id_user'], $_POST['amount'])
 	);
 
 	$user_checkout = $cart->user_checkout($data);

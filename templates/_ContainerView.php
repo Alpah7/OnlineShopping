@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="padding-top: 30px;margin-bottom: 150px;">
 
 	<div class="col-md-4">
 		<img src="<?= $details['images'] ?>" alt="<?= str_replace('_',' ',$_GET['item']) ?>" class="img-responsive">

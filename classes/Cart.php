@@ -18,9 +18,7 @@ class Cart extends Database{
 
 		if ($result['Member'] == 'Premium') {
 
-			$tax_ppn = ($total_price * 0.03);
-			$total_price_plus_ppn = ($total_price + $tax_ppn);
-			$total_plus_discount = ($total_price_plus_ppn - 0.05);
+			$total_plus_discount = $total_price - ($total_price * 0.05) + ($total_price * 0.03);
 
 			return $total_plus_discount;
 
@@ -144,12 +142,9 @@ class Cart extends Database{
 
 		}
 
-		if ($this->check_account_number($params['no_rekening']) > 0) {
-			$msg = false;
-		}
 
 		for ($i=0; $i < count($data_order); $i++) { 
-			$sql = "INSERT INTO `order_product`(`id_order`, `id_product`, `id_user`, `qty`, `size`, `account_name`, `account_number`, `amount`, `tax`, `total_price`, `out_of_date`, `order_date`, `status`) VALUES ('".$params['id_order']."','".$data_order[$i]['id_product']."','".$data_order[$i]['id_session']."','".$data_order[$i]['qty']."','".$data_order[$i]['size']."','".$params['name_of_account']."','".$params['no_rekening']."','".$params['amount']."','".$params['tax']."','".$params['total_price']."','".$out_of_date."','".$order_date."',0)";
+			$sql = "INSERT INTO `order_product`(`id_order`, `id_product`, `id_user`, `qty`, `size`, `account_name`, `amount`, `tax`, `total_price`, `out_of_date`, `order_date`, `status`, `deleted`) VALUES ('".$params['id_order']."','".$data_order[$i]['id_product']."','".$data_order[$i]['id_session']."','".$data_order[$i]['qty']."','".$data_order[$i]['size']."','".$params['name_of_account']."','".$params['amount']."','".$params['tax']."','".$params['total_price']."','".$out_of_date."','".$order_date."',0,0)";
 			$query_insert = $this->db->query($sql);
 		}
 

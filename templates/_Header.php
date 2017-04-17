@@ -14,12 +14,13 @@
     <!-- Bootstrap core CSS -->
     <link href="<?= __SHOP__ ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= __SHOP__ ?>assets/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= __SHOP__ ?>admin/libs/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="<?= __SHOP__ ?>admin/libs/css/jquery.dataTables.min.css">
 
     <!-- Custom styles for this template -->
    <style>
    	body {
   	  padding-top: 50px;
-  	  padding-bottom: 20px;
   	}
     .dropdown-menu, .dorpdown-cart{
       min-width: 400px;

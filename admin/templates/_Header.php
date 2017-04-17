@@ -13,5 +13,6 @@
 	<link rel="stylesheet" href="<?= __SHOP__ ?>admin/libs/css/starter-templates.css">
 	<link rel="stylesheet" href="<?= __SHOP__ ?>admin/libs/css/admin-templates.css">
 	<link rel="stylesheet" href="<?= __SHOP__ ?>admin/libs/css/morris.css">
+	<link href="<?= __SHOP__ ?>admin/libs/css/bootstrap-toggle.min.css" rel="stylesheet">
 </head>
 <body>

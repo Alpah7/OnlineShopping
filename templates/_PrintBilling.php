@@ -40,12 +40,12 @@
 					<?php endforeach ?>
 						<tr>
 							<td colspan="4" align="right">Total Price :</td>
-							<td><?= $generator->IDR($billing[0]['total_price']) ?></td>
+							<td><?= $generator->IDR($billing[0]['amount']) ?></td>
 							<td colspan="2">&nbsp;</td>
 						</tr>
 						<tr>
 					  		<td colspan="4" align="right">Tax :</td>
-					  		<td><?= $tax = ($_SESSION['scopes'] == 'member/') ? '1%' : '3%'; ?></td>
+					  		<td><?= $tax = ($_SESSION['scopes'] == 'member/') ? '3%' : '3%'; ?></td>
 					  		<td colspan="2">&nbsp;</td>
 					  	</tr>
 					  	<tr>
@@ -55,7 +55,7 @@
 					  	</tr>
 					  	<tr>
 					  		<td colspan="4" align="right">Total Shipping :</td>
-					  		<td><?= $generator->IDR((int)($cart->cart_rules($_SESSION['billing'], $billing[0]['total_price']))) ?></td>
+					  		<td><?= $generator->IDR((int)($billing[0]['total_price'])) ?></td>
 					  		<td colspan="2">&nbsp;</td>
 					  	</tr>
 					</tbody>
