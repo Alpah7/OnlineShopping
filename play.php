@@ -1,5 +1,8 @@
 <?php 
 
+// $dompdf->stream('my.pdf',array('Attachment'=>0));
+
+
 require_once './libraries/qr-code-reader/src/QRCodeReader.php';
 
 $conn = new MySQLi('localhost','root','','project_ecommerce');
