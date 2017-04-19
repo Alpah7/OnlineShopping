@@ -18,8 +18,8 @@ $categories 	= new Categories();
 $all_categories = $categories->get_all_categories();
 
 $generator 		= new Generators();
-
-$cart 		= new Cart();
+$QRCodeReader 	= new Libern\QRCodeReader\QRCodeReader();
+$cart 			= new Cart();
 
 /* Admin Private Initialized */
 
@@ -28,6 +28,7 @@ $notif = $admin->get_user_notifications();
 
 $orders = new Orders();
 $scheduler = $orders->delete_scheduler();
+$auto_insert_transaction = $orders->auto_insert_data_transaction();
 $orders_data = $orders->get_data_order();
 
 /* ========================= */

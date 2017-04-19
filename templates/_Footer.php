@@ -12,11 +12,11 @@
 	      <div class="row-fluid text-center">
 	      	<div class="col-md-6">
 	      	<h2>Courier</h2>
-	      		<img src="./assets/images/pengiriman.png" alt="Logo Courier" class="img-responsive" style="margin: auto;">
+	      		<img src="<?= __SHOP__ ?>assets/images/pengiriman.png" alt="Logo Courier" class="img-responsive" style="margin: auto;">
 	      	</div>
 	      	<div class="col-md-6">
 	      	<h2>Bank</h2>
-	      		<img src="./assets/images/logo-bank.png" alt="Logo Courier" class="img-responsive" style="margin: auto;">
+	      		<img src="<?= __SHOP__ ?>assets/images/logo-bank.png" alt="Logo Courier" class="img-responsive" style="margin: auto;">
 	      	</div>
 	      </div>
 
@@ -44,6 +44,17 @@
 			    $('#item_exists').modal('show').on('shown', function () {
 			    	window.setTimeout(function () {
 			        	$("#item_exists").modal("hide");
+			    	}, 2000);
+			    });
+
+			}
+
+
+			if(window.location.href.indexOf('#alert-messages') != -1) {
+
+			    $('#alert-messages').modal('show').on('shown', function () {
+			    	window.setTimeout(function () {
+			        	$("#alert-messages").modal("hide");
 			    	}, 2000);
 			    });
 

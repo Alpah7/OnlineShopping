@@ -3,7 +3,7 @@
 	<div id="html-content-holder" style="letter-spacing:1px;padding-top: 40px;">
 		<div class="row"> 
 			<div class="col-md-4 text-center">
-				<img src="http://localhost/oop-shopping-cart/libraries/qrcode.php?text=<?= $_SESSION['billing'] ?>" alt="ORDER ID">
+				<img src="http://localhost/oop-shopping-cart/libraries/qrcode.php?text=<?= $_SESSION['id_order'] ?>" alt="ORDER ID">
 				<h3>ORDER ID</h3>
 				<p class="help-block">
 					<div class="text-left">

@@ -25,6 +25,7 @@
 		$("#table_user").DataTable();
 		$("#table_products").DataTable();
 		$("#table_categories").DataTable();
+		$("#table_order").DataTable();
 
 		$(".change-status").on('click',function(event) {
 			event.preventDefault();

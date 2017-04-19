@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="padding-top: 30px;margin-bottom: 150px;">
 	<?php $dataUser = $user->get_user_details($_SESSION['users']) ?>
 	<hr>
 
@@ -72,7 +72,7 @@
 					</tr>
 				<?php endif ?>
 				</tbody>
-
+			</table>
 		</div>
 	</div>
 
