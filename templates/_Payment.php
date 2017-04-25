@@ -27,26 +27,39 @@
 
 			<div class="row">
 				<div class="col-md-6">
-					<form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST">
+					<?php if (sizeof($payment) > 0): ?>
+					<div class="well" style="font-family: 'Special Elite', cursive;background-color: #263238;color: #fff;">
+
+						<ul class="list-unstyled">
+							<li class="list-group-item-heading text-center">Data Orders</li>
+						<?php foreach ($payment as $data): ?>
+							<li><b>Order ID</b> : <?= $data['O_ID_ORDER'] ?></li>
+							<li><b>Fullname</b> : <?= $data['O_FULLNAME'] ?></li>
+							<li><b>Product</b> : <br> <?= $data['O_PRODUCT'] ?></li>
+							<li><b>Size</b> : <?= $data['O_SIZE'] ?></li>
+							<li><b>Qty</b> : <?= $data['O_QTY'] ?></li>
+							<li><b>Account Name</b> : <?= $data['O_ACCOUNT_NAME'] ?></li>
+							<li><b>Account Number</b> : <?= $_POST['account_number'] ?></li>
+							<li><b>Amount</b> : <?= $generator->IDR($data['O_AMOUNT']) ?></li>
+							<li><b>Tax</b> : <?= $generator->IDR($data['O_TAX']) ?></li>
+							<li><b>Total Price</b> : <?= $generator->IDR($data['O_TOTAL_PRICE']) ?></li>
+							<li><b>Status</b> : <?= $status = ($data['O_STATUS'] == 0) ? '<span class="label label-warning">Waiting...</span>' : '<span class="label label-success">Process...</span>'; ?></li>
+						<?php endforeach; ?>
+						</ul>
+					</div>
+					<?php else: ?>
+					<div class="well small">
+						Your Order Information will display in here...
+					</div>
+					<?php endif; ?>
+				</div>
+				<div class="col-md-6">
+				<form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST" enctype="multipart/form-data">
 						<label for="billing_upload"><i class="fa fa-camera"></i> Your Billing Screenshoot</label>
 						<div class="form-group">
 						    <input type="file" class="form-control" name="billing_upload" required <?php if (!isset($_SESSION['users'])): ?> disabled <?php endif; ?> required>
 					    </div>
 					<hr>
-					<div class="well">
-					<?php if (isset($_POST['id_order'])): ?>
-
-						<div class="form-group">
-							<label>ORDER ID</label>
-							<b><?= $data['id_order'] ?></b>
-						</div>
-						
-
-					<?php endif; ?>
-						Your Order Information will display in here...
-					</div>
-				</div>
-				<div class="col-md-6">
 						<div class="form-group">
 							<label for="account_name">Account Name</label>
 							<input type="text" name="account_name" placeholder="Your Account Name" <?php if (!isset($_SESSION['users'])): ?> disabled <?php endif; ?> class="form-control" required>

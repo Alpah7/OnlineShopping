@@ -31,7 +31,7 @@
     	</thead>
     	<tbody>
     	<?php foreach ($all_users as $data) { ?>
-    		<tr>
+    		<tr <?php if ($data['status'] != 1): ?> class="danger" <?php endif ?>>
     			<td><?= $data['id_user'] ?></td>
     			<td><?= $data['username'] ?></td>
     			<td><?= $data['firstname'] .' '. $data['lastname'] ?></td>

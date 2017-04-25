@@ -30,9 +30,11 @@
     <script src="<?= __SHOP__ ?>assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?= __SHOP__ ?>assets/js/html2canvas.js"></script>
     <script src="<?= __SHOP__ ?>admin/libs/js/jquery.dataTables.min.js"></script>
+    <script src="<?= __SHOP__ ?>assets/js/dataTables.bootstrap.min.js"></script>
     <script>
 
     		$("#table_order_user").DataTable();
+    		$("#table_all_order").DataTable();
 
     		$(".nav a").on("click", function(){
 			   $(".nav").find(".active").removeClass("active");

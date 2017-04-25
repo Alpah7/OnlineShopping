@@ -30,6 +30,7 @@
             <li><a href="javascript:;" data-idUser="<?= $data['id_user'] ?>" class="change-status"><i class="fa fa-user"></i> <?= $data['email'] ?></a></li>
 
             <?php endforeach ?>
+            <li class="text-center"><a href="#">Notifications Users <span class="badge"><?= $admin->alert_notif() ?></span></a></li>
           <?php else: ?>
             <li class="text-center"><a href="#">Notifications is Empty</a></li>
           <?php endif ?>

@@ -5,16 +5,21 @@ class Orders extends Database{
 
 	public function auto_insert_data_transaction(){
 
-		$month = date('F-Y');
+		$month = date('Y-m');
+		$now = date('Y-m-d h:i:s');
 
-		$query 	= "SELECT DATE_FORMAT(order_date, '%M-%Y') AS ORDER_DATE, SUM(amount) AS TOTAL_AMOUNT, SUM(total_price) AS TOTAL_EARNING FROM order_product WHERE status=1";
+		$query 	= "SELECT order_product.id_product AS ID_PRD, order_product.id_user AS ID_USER, order_product.status AS STATUS, order_product.qty AS QTY_ORD, products.stock AS STOCK, order_product.amount AS TOTAL_AMOUNT, order_product.total_price AS TOTAL_EARNING, order_product.id_order AS ID_ORDER, DATE_FORMAT(order_product.order_date, '%Y-%m') AS ORDER_DATE FROM order_product JOIN products ON order_product.id_product = products.id_product WHERE order_product.status=1";
 		$sql 	= $this->db->query($query);
 		$result = $sql->fetch_assoc();
 
-		if ($month != $result['ORDER_DATE']) {
-			
-			$query 	= "INSERT INTO transaction (id_transaction,month,kotor,bersih) VALUES ('','".$result['ORDER_DATE']."','".$result['TOTAL_AMOUNT']."','".$result['TOTAL_EARNING']."')";
-			$sql 	= $this->db->query($query);
+		if (!$result['ID_ORDER']) {
+
+			if ($result['ORDER_DATE'] >= $month) {
+				
+				$query 	= "INSERT INTO `transactions`(`id_transaction`, `id_order`, `id_product`, `id_user`, `gross_income`, `net_income`, `date_transaction`) VALUES ('','".$result['ID_ORDER']."','".$result['ID_PRD']."','".$result['ID_USER']."','".$result['TOTAL_EARNING']."','".$result['TOTAL_AMOUNT']."','".$now."')";
+				$sql 	= $this->db->query($query);
+
+			}
 
 		}
 
@@ -26,12 +31,13 @@ class Orders extends Database{
 
 		$query = "SELECT id_order, out_of_date FROM order_product";
 		$sql = $this->db->query($query);
+		$result = $sql->fetch_all(MYSQLI_ASSOC);
 
-		while ($result = $sql->fetch_assoc()) {
+		foreach ($result as $data) {
 			
-			if ($result['out_of_date'] == date('Y-m-d')) {
+			if ($data['out_of_date'] == date('Y-m-d')) {
 				
-				$query = "DELETE FROM order_product WHERE id_order='".$result['id_order']."'";
+				$query = "DELETE FROM order_product WHERE id_order='".$data['id_order']."'";
 				$sql = $this->db->query($query);
 
 			}
@@ -72,37 +78,50 @@ class Orders extends Database{
 
 	}
 
-	function get_user_order_payment($data){
+	public function get_user_order_payment($data){
 
-		$id_order 		= $data['id_order'];
-		$filename 		= $data['filename'];
-		$filetmp 		= $data['filetmp'];
-		$filetype 		= pathinfo($data['filetype'])['extension'];
-		$account_name 	= $data['account_name'];
-		$account_number = $data['account_number'];
-		move_uploaded_file($file_temp, '../assets/images/payments/'.$filename);
-		$qrcode 		= $QRCodeReader->decode('../assets/images/payments/'.$filename);
+		$query = "SELECT
+					order_product.id_order AS O_ID_ORDER, 
+					CONCAT(users.firstname, ' ' ,users.lastname) AS O_FULLNAME, 
+					CONVERT(GROUP_CONCAT(products.name SEPARATOR ', ') USING utf8) AS O_PRODUCT,
+					CONVERT(GROUP_CONCAT(order_product.qty SEPARATOR ', ') USING utf8) AS O_QTY, 
+					CONVERT(GROUP_CONCAT(order_product.size SEPARATOR ', ') USING utf8) AS O_SIZE, 
+					order_product.account_name AS O_ACCOUNT_NAME, 
+					order_product.amount AS O_AMOUNT, 
+					order_product.tax AS O_TAX, 
+					order_product.total_price AS O_TOTAL_PRICE, 
+					order_product.status AS O_STATUS 
+				FROM order_product 
+				JOIN products ON order_product.id_product = products.id_product 
+				JOIN users ON order_product.id_user = users.id_user 
+				WHERE order_product.id_order = '".$data."'
+				GROUP BY order_product.id_order";
+		$sql = $this->db->query($query);
+		$result = $sql->fetch_all(MYSQLI_ASSOC);
 
-		if ($id_order == $qrcode && filetype == 'png') {
-			
-			if ($account_name == auth_accaount_payment($account_name)) {
-				
-				$query = "SELECT order_product.id_order AS O_ID_ORDER, CONCAT(users.firstname, ' ' ,users.lastname) AS O_FULLNAME, CONVERT(GROUP_CONCAT(products.name SEPARATOR ', ') USING utf8) AS O_PRODUCT, CONVERT(GROUP_CONCAT(order_product.qty SEPARATOR ', ') USING utf8) AS O_QTY, CONVERT(GROUP_CONCAT(order_product.size SEPARATOR ', ') USING utf8) AS O_SIZE, order_product.account_name AS O_ACCOUNT_NAME, order_product.amount AS O_AMOUNT, order_product.tax AS O_TAX, order_product.total_price AS O_TOTAL_PRICE, order_product.status AS O_STATUS FROM order_product JOIN products ON order_product.id_product = products.id_product JOIN users ON order_product.id_user = users.id_user AND order_product.id_order = '".$id_order."' GROUP BY order_product.id_order";
-				$sql = $this->db->query($query);
-				$result = $sql->fetch_all(MYSQLI_ASSOC);
+		return $result;
 
+	}
 
-				if (count($result) < 1) {
-					return false;
-				}
+	public function all_user_orders(){
 
-				return $result;
+		$query = "SELECT
+				    order_product.id_order AS O_ID_ORDER, 
+					CONCAT(users.firstname, ' ' ,users.lastname) AS O_FULLNAME, 
+					CONVERT(GROUP_CONCAT(products.name SEPARATOR '<br> ') USING utf8) AS O_PRODUCT,
+					CONVERT(GROUP_CONCAT(order_product.qty SEPARATOR '<br> ') USING utf8) AS O_QTY, 
+					CONVERT(GROUP_CONCAT(order_product.size SEPARATOR '<br> ') USING utf8) AS O_SIZE,
+					users.address AS O_ADDR,
+					order_product.total_price AS O_TOTAL_PRICE,
+					order_product.status AS O_STATUS 
+				FROM order_product 
+				JOIN products ON order_product.id_product = products.id_product 
+				JOIN users ON order_product.id_user = users.id_user 
+				GROUP BY order_product.id_order";
+		$sql = $this->db->query($query);
+		$result = $sql->fetch_all(MYSQL_ASSOC);
 
-			}
-
-		}
-
-		return false;
+		return $result;
 
 	}
 

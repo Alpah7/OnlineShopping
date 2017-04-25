@@ -11,7 +11,7 @@ class Products extends Database {
 
 		$start 	 = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
-		$products = "SELECT * FROM products LIMIT $start, $perPage";
+		$products = "SELECT * FROM products  ORDER BY RAND() LIMIT $start, $perPage";
 		$pResult  = $this->db->query($products);
 		$data     = array();
 		while ($result = $pResult->fetch_assoc()) {
@@ -44,7 +44,7 @@ class Products extends Database {
 
 	public function all_products(){
 
-		$query = "SELECT products.*, categories.name AS categories FROM products, categories WHERE products.id_cat=categories.id_cat ORDER BY id_product";
+		$query = "SELECT products.*, categories.name AS categories FROM products JOIN categories ON products.id_cat = categories.id_cat WHERE products.id_cat=categories.id_cat ORDER BY products.id_product DESC";
 		$sql = $this->db->query($query);
 		$result = $sql->fetch_all(MYSQLI_ASSOC);
 

@@ -5,7 +5,7 @@
 	<div class="container row">
 
 		<div class="col-lg-3 text-center">
-			<img src="http://fakeimg.pl/250x250/222/fff" class="img-circle">
+			<img src="http://fakeimg.pl/250x250/222/fff/?text=<?= $_SESSION['firstname'] ?>&font=lobster" class="img-circle">
 			<hr>
 			<h3><?= $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?></h3>
 			<div class="text-left">

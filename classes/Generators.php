@@ -4,7 +4,7 @@ class Generators extends Database{
 
 	public function userID(){
 
-		$query = "SELECT MAX(CAST(REPLACE(SUBSTR(id_user, -2), '-','') AS UNSIGNED)) AS NEW_ID FROM users";
+		$query = "SELECT (CASE WHEN (LENGTH(id_user) > 12) THEN MAX(CAST(REPLACE(SUBSTR(id_user, -3), '-','') AS UNSIGNED)) ELSE MAX(CAST(REPLACE(SUBSTR(id_user, -2), '-','') AS UNSIGNED)) END) AS NEW_ID FROM users";
 		$sql = $this->db->query($query);
 		$last_id = $sql->fetch_assoc();
 
@@ -14,7 +14,7 @@ class Generators extends Database{
 
 	public function productID(){
 
-		$query = "SELECT MAX(CAST(REPLACE(SUBSTR(id_product, -2), '-','') AS UNSIGNED)) AS NEW_ID FROM products";
+		$query = "SELECT (CASE WHEN (LENGTH(id_product) > 14) THEN MAX(CAST(REPLACE(SUBSTR(id_product, -3), '-','') AS UNSIGNED)) ELSE MAX(CAST(REPLACE(SUBSTR(id_product, -2), '-','') AS UNSIGNED)) END) AS NEW_ID FROM products";
 		$sql = $this->db->query($query);
 		$last_id = $sql->fetch_assoc();
 
@@ -24,7 +24,7 @@ class Generators extends Database{
 
 	public function orderID(){
 
-		$query = "SELECT MAX(CAST(REPLACE(SUBSTR(id_order, -2), '-','') AS UNSIGNED)) AS NEW_ID FROM order_product";
+		$query = "SELECT (CASE WHEN (LENGTH(id_order) > 14) THEN MAX(CAST(REPLACE(SUBSTR(id_order, -3), '-','') AS UNSIGNED)) ELSE MAX(CAST(REPLACE(SUBSTR(id_order, -2), '-','') AS UNSIGNED)) END) AS NEW_ID FROM order_product";
 		$sql = $this->db->query($query);
 		$last_id = $sql->fetch_assoc();
 
@@ -32,8 +32,18 @@ class Generators extends Database{
 
 	}
 
+	public function transactionsID(){
+
+		$query = "SELECT (CASE WHEN (LENGTH(id_order) > 14) THEN MAX(CAST(REPLACE(SUBSTR(id_order, -3), '-','') AS UNSIGNED)) ELSE MAX(CAST(REPLACE(SUBSTR(id_order, -2), '-','') AS UNSIGNED)) END) AS NEW_ID FROM transactions";
+		$sql = $this->db->query($query);
+		$last_id = $sql->fetch_assoc();
+
+		return "TR-".date('md').'-'.date('y').'-'.($last_id['NEW_ID']+1);
+
+	}
+
 	public function IDR($number) {  
-	    $idr = '<b><i>IDR</i></b> '.number_format($number, 2, ',', '.');  
+	    $idr = '<sup><i>IDR</i></sup> '.number_format($number, 2, ',', '.');  
 	    return $idr;  
 	}
 

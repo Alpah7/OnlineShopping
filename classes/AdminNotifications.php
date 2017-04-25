@@ -18,7 +18,7 @@ class AdminNotifications extends Database {
 
 	public function get_user_notifications(){
 
-		$query = "SELECT * FROM users WHERE status=0";
+		$query = "SELECT * FROM users WHERE status=0 LIMIT 5";
 		$sql = $this->db->query($query);
 		while ($result = $sql->fetch_assoc()) {
 			

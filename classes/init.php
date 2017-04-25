@@ -1,8 +1,8 @@
 <?php
 
 $products 		= new Products();
-$items 			= $products->getAllProduct(8);
-$number 		= $products->getPage(8);
+$items 			= $products->getAllProduct(12);
+$number 		= $products->getPage(12);
 $all_products 	= $products->all_products();
 $num_products	= count($all_products);
 $categories		= $products->categories();
@@ -18,7 +18,7 @@ $categories 	= new Categories();
 $all_categories = $categories->get_all_categories();
 
 $generator 		= new Generators();
-$QRCodeReader 	= new Libern\QRCodeReader\QRCodeReader();
+$QRCodeReader	= new Libern\QRCodeReader\QRCodeReader();
 $cart 			= new Cart();
 
 /* Admin Private Initialized */

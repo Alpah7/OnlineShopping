@@ -20,19 +20,17 @@
           <ul class="dropdown-menu">
               <li><a href="how-to-order-item.php">Order Items</a></li>
               <li><a href="how-to-transaction.php">Transaction</a></li>
-              <li><a href="how-to-check-order-process.php">Check Order Process</a></li>
             </ul>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Others <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Shippings</a></li>
-              <li><a href="#">Transaction of The Mounth</a></li>
-              <li><a href="#">Hot Sales</a></li>
+              <li><a href="shippings.php">Shippings</a></li>
+              <li><a href="t-o-t-m.php">Transaction of The Mounth</a></li>
+              <li><a href="hot_sales.php">Hot Sales</a></li>
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">Utitlities</li>
               <li><a href="payment.php">Order Payment</a></li>
-              <li><a href="#">Check Order ID</a></li>
               <li class="disabled"><a href="javascript:;">QrCode Payment System</a></li>
             </ul>
           </li>

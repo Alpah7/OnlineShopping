@@ -2,10 +2,22 @@
   <!-- Example row of columns -->
   <div class="row" id="products">
   <?php foreach ($items as $data) { ?>
-    <div class="col-md-3 col-sm-6">
-    <img src="<?= $data['images'] ?>" class="img-responsive">
-      <h4><?= $data['name'] ?></h4>
-      <p><a class="btn btn-default" href="view.php?id=<?= $data['id_product'] ?>&item=<?= str_replace('+','_',urlencode($data['name'])) ?>" role="button">View details &raquo;</a></p>
+    <div class="col-md-3 col-sm-6" style="margin: 30px 0px;font-family: 'Love Ya Like A Sister', helvetica;">
+      <div class="ih-item circle effect13 bottom_to_top">
+        <a href="view.php?id=<?= $data['id_product'] ?>&item=<?= str_replace('+','_',urlencode($data['name'])) ?>">
+          <div class="img">
+            <img src="<?= $data['images'] ?>" alt="img">
+          </div>
+          <div class="info">
+            <h3><?= $data['name'] ?></h3>
+            <p>
+              <b>Stock</b> : <?= $data['stock'] ?><br>
+              Category : <b><?= $products->get_details_item($data['id_product'])['cat_name'] ?></b><br>
+              <b>Stock</b> : <?= $generator->IDR($data['price']) ?>
+            </p>
+          </div>
+        </a>
+      </div>
     </div>
   <?php } ?>
   </div>
