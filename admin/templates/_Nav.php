@@ -10,8 +10,7 @@
       </button>
       <a class="navbar-brand" href="#"><i class="fa fa-shopping-bag"></i> Betta Shop</a>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
+    
     <div class="collapse navbar-collapse" id="button-collapse">
       <ul class="nav navbar-nav">
         
@@ -30,7 +29,7 @@
             <li><a href="javascript:;" data-idUser="<?= $data['id_user'] ?>" class="change-status"><i class="fa fa-user"></i> <?= $data['email'] ?></a></li>
 
             <?php endforeach ?>
-            <li class="text-center"><a href="#">Notifications Users <span class="badge"><?= $admin->alert_notif() ?></span></a></li>
+            <li class="text-center"><a href="notifications.php">Notifications Users <span class="badge"><?= $admin->alert_notif() ?></span></a></li>
           <?php else: ?>
             <li class="text-center"><a href="#">Notifications is Empty</a></li>
           <?php endif ?>

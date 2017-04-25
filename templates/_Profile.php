@@ -21,6 +21,28 @@
 						<i class="glyphicon glyphicon-info-sign"></i> Your are member of Betta Shop, every transaction you have a 5% discount.
 					</div>
 				<?php endif ?>
+				<hr>
+				<?php if (isset($_GET['error'])  == 'true'): ?>
+				<div class="alert alert-danger" role="alert" id="alert_struk">
+				  <p>Error Uploading!</p>
+				</div>
+				<?php elseif (isset($_GET['success'])  == 'true'): ?>
+					<div class="alert alert-success" role="alert" id="alert_struk">
+				  <p>Uploading successfully!</p>
+				</div>
+				<?php endif; ?>
+				<form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST" enctype="multipart/form-data">
+					<div class="form-group">
+						<label>Upload Struk Transfer</label>
+						<div class="input-group">
+					      <input type="file" class="form-control" name="struk_transfer">
+					      <span class="input-group-btn">
+					        <button class="btn btn-default" type="submit">Send!</button>
+					      </span>
+					    </div>
+						<input type="hidden" name="id_user" value="<?= $_SESSION['users'] ?>">
+					</div>
+				</form>
 			</div>
 		</div>
 

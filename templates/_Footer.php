@@ -41,6 +41,10 @@
 			   $(this).parent().addClass("active");
 			});
 
+			setTimeout(function(){
+				$('#alert_struk').hide();
+			}, 3000);
+
 		  	if(window.location.href.indexOf('#item_exists') != -1) {
 
 			    $('#item_exists').modal('show').on('shown', function () {

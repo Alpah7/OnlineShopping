@@ -91,7 +91,7 @@ class Users extends Database
 
 	public function all_users(){
 
-		$query = "SELECT users.*, members.* FROM users, members WHERE users.id_member!=3 AND users.id_member=members.id_member";
+		$query = "SELECT users.*, members.* FROM users JOIN members ON users.id_member=members.id_member WHERE users.id_member!=3 AND users.status=1";
 		$sql = $this->db->query($query);
 		$res = $sql->fetch_all(MYSQLI_ASSOC);
 
@@ -161,6 +161,45 @@ class Users extends Database
 		return $result;
 
 	}
+
+	public function user_upload_struk($data){
+
+		$id_user 		= $data['id_user'];
+		$upload_path 	= $data['upload_path'];
+		$upload_url 	= $data['upload_url'];
+		$tmp 			= $data['tmp'];
+
+		$query = "INSERT INTO struk_payment (id_struk,id_user,struk_image,status) VALUES ('','".$id_user."','".$upload_url."',0)";
+		$sql = $this->db->query($query);
+
+		if ($sql) {
+			move_uploaded_file($tmp, $upload_path);
+			echo "<script>window.location.href='http://localhost/oop-shopping-cart/user/profile.php?success=true'</script>";
+		}else{
+			echo "<script>window.location.href='http://localhost/oop-shopping-cart/user/profile.php?error=true'</script>";
+		}
+
+	}
+
+	public function user_notifications(){
+
+		$query = "SELECT 
+					users.id_user AS IdUser,
+					CONCAT(users.firstname, ' ',users.lastname) AS Fullname,
+					users.username AS Username,
+					users.email AS Email, 
+					users.address AS Address,
+					users.phone AS Phone,
+					members.name AS Member,
+					users.status AS Status
+				FROM users JOIN members ON users.id_member = members.id_member WHERE users.status=0";
+		$sql = $this->db->query($query);
+		$result = $sql->fetch_all(MYSQLI_ASSOC);
+
+		return $result;
+
+	}
+	
 }
 
 

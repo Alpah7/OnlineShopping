@@ -11,6 +11,10 @@ if (isset($_FILES['billing_upload']['name'])) {
 	$filetmp 		= $_FILES['billing_upload']['tmp_name'];
 	$filetype 		= pathinfo($filename)['extension'];
 
+	// var_dump($_FILES);
+
+	// die();
+
 	if ($filetype == 'png') {
 
 		move_uploaded_file($filetmp, '../assets/images/payments/'.$filename);

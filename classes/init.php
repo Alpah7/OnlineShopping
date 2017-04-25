@@ -23,6 +23,8 @@ $cart 			= new Cart();
 
 /* Admin Private Initialized */
 
+$payments = new Payments();
+
 $admin = new AdminNotifications();
 $notif = $admin->get_user_notifications();
 

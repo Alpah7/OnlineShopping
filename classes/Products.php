@@ -54,7 +54,7 @@ class Products extends Database {
 
 	public function categories(){
 
-		$query = "SELECT * FROM categories";
+		$query = "SELECT * FROM categories LIMIT 5";
 		$sql = $this->db->query($query);
 		$result = $sql->fetch_all(MYSQLI_ASSOC);
 
