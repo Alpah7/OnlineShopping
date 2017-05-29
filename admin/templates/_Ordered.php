@@ -6,20 +6,16 @@
 	<table id="table_order" class="table table-bordered table-hover table-striped small">
 		<thead>
 			<tr>
-				<th rowspan="2" class="text-center">ORDER ID</th>
-				<th rowspan="2" class="text-center">Product Name</th>
-				<th rowspan="2" class="text-center">Qty</th>
-				<th rowspan="2" class="text-center">Size</th>
-				<th colspan="2" class="text-center">Account</th>
-				<th rowspan="2" class="text-center">Amount</th>
-				<th rowspan="2" class="text-center">Tax</th>
-				<th rowspan="2" class="text-center">Total Shipping</th>
-				<th rowspan="2" class="text-center">Order Status</th>
+				<th class="text-center">ORDER ID</th>
+				<th class="text-center">Product Name</th>
+				<th class="text-center">Qty</th>
+				<th class="text-center">Size</th>
+				<th class="text-center">Account</th>
+				<th class="text-center">Amount</th>
+				<th class="text-center">Tax</th>
+				<th class="text-center">Total Shipping</th>
+				<th class="text-center">Order Status</th>
 			</tr>
-			<tr>
-				<th>Name</th>
-			    <th>Number</th>
-		    </tr>
 		</thead>
 		<tbody>
 		<?php if ($orders->num_order() > 0): ?>
@@ -30,7 +26,6 @@
 				<td><?= $data['O_QTY'] ?></td>
 				<td><?= $data['O_SIZE'] ?></td>
 				<td><?= ucwords($data['O_ACCOUNT_NAME']) ?></td>
-				<td>&nbsp;</td>
 				<td><?= $generator->IDR($data['O_AMOUNT']) ?></td>
 				<td><?= $generator->IDR($data['O_TAX']) ?></td>
 				<td><?= $generator->IDR($data['O_TOTAL_PRICE']) ?></td>

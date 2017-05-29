@@ -6,6 +6,7 @@ if (isset($_FILES['struk_transfer']['name'])) {
 	$dir = '../assets/images/struk_payment/';
 
 	$id_user 		= $_POST['id_user'];
+	$id_order 		= $_POST['id_order'];
 
 	$s_filename 	= $_FILES['struk_transfer']['name'];
 	$s_file_size 	= $_FILES['struk_transfer']['size'];
@@ -36,6 +37,7 @@ if (isset($_FILES['struk_transfer']['name'])) {
 
 	$data = array(
 		'id_user' => $id_user,
+		'id_order' => $id_order,
 		'upload_path' => $upload_path,
 		'upload_url' => $upload_url,
 		'tmp' => $s_file_tmp

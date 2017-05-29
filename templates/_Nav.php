@@ -8,29 +8,28 @@
         <span class="icon-bar"></span>
       </button>
       <?php if (!empty($_SESSION['scopes'])) { ?>
-      <a class="navbar-brand" href="<?= __SHOP__ . $_SESSION['scopes'] ?>"><i class="fa fa-shopping-bag"></i> Betta Shop</a>
+      <a class="navbar-brand" href="<?= __SHOP__ . $_SESSION['scopes'] ?>"><i class="fa fa-shopping-bag"></i> Batik Sleker Asri</a>
       <?php }else{ ?>
-      <a class="navbar-brand" href="<?= __SHOP__?>"><i class="fa fa-shopping-bag"></i> Betta Shop</a>
+      <a class="navbar-brand" href="<?= __SHOP__?>"><i class="fa fa-shopping-bag"></i> Batik Sleker Asri</a>
       <?php } ?>
       <ul class="nav navbar-nav">
-          <li class="active"><a href="<?= __SHOP__?>">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-info-sign"></i> How To? <span class="caret"></span></a>
+          <li class="active"><a href="<?= __SHOP__?>">Beranda</a></li>
+          <li><a href="#">Tentang Kami</a></li>
+          <li><a href="#">Kontak Kami</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Tips? <span class="caret"></span></a>
           <ul class="dropdown-menu">
-              <li><a href="how-to-order-item.php">Order Items</a></li>
-              <li><a href="how-to-transaction.php">Transaction</a></li>
+              <li><a href="how-to-order-item.php">Belanja</a></li>
+              <li><a href="how-to-transaction.php">Traksaksi</a></li>
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Others <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lainnya <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="shippings.php">Shippings</a></li>
-              <li><a href="t-o-t-m.php">Transaction of The Mounth</a></li>
-              <li><a href="hot_sales.php">Hot Sales</a></li>
+              <li><a href="shippings.php">Pengiriman</a></li>
+              <li><a href="t-o-t-m.php">Transaksi Bulan Ini</a></li>
+              <li><a href="hot_sales.php">Item Terlaris</a></li>
               <li role="separator" class="divider"></li>
-              <li class="dropdown-header">Utitlities</li>
-              <li><a href="payment.php">Order Payment</a></li>
+              <li><a href="payment.php">Pembayaran Barang</a></li>
               <li class="disabled"><a href="javascript:;">QrCode Payment System</a></li>
             </ul>
           </li>

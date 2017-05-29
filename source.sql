@@ -132,12 +132,12 @@ USE project_ecommerce;
 -- DESCRIBE members;
 -- DESCRIBE users;
 
--- SELECT 
--- 	CONCAT(users.firstname, ' ',users.lastname) AS Fullname,
--- 	users.username AS Username,
--- 	users.email AS Email, 
--- 	users.address AS Address,
--- 	users.phone AS Phone,
--- 	members.name AS Member,
--- 	users.status AS Status
--- FROM users JOIN members ON users.id_member = members.id_member WHERE users.status=0;
+SELECT 
+	CONCAT(users.firstname, ' ',users.lastname) AS Fullname,
+	users.username AS Username,
+	users.email AS Email, 
+	users.address AS Address,
+	users.phone AS Phone,
+	members.name AS Member,
+	users.status AS Status
+FROM users JOIN members ON users.id_member = members.id_member WHERE users.status=0;

@@ -162,18 +162,49 @@ class Users extends Database
 
 	}
 
+	public function send_to($id_user){
+
+		$query = "SELECT CONCAT(firstname, ' ' ,lastname) AS fullname, email FROM users WHERE id_user = '".$id_user."'";
+		$sql = $this->db->query($query);
+		$result = $sql->fetch_assoc();
+
+		return $result;
+
+	}
+
+	public function send_message($id_user){
+
+		$to_id 		= $id_user;
+		$from_id	= 'USR-0406-17-1';
+
+		$to_name 	= $this->send_to($to_id);
+		$from_name 	= $this->send_to($from_id);
+
+		$body = "
+			Terimakasih ".ucwords($to_name['fullname'])." telah melakukan transaksi di situs kami. Barang yang anda pesan akan segera kami proses. Untuk pertannyaan lebih lanjut silahkan hubungi kami via messager yang telah kami sediakan.
+			<br><br>
+			The Best Regards,
+			". ucwords($from_name['fullname']);
+
+		$query = "INSERT INTO messages (`from`,`to`,`body`) VALUES ('".$to_id."','".from_id."','".$body."')";
+		$sql = $this->db->query($query);
+
+	}
+
 	public function user_upload_struk($data){
 
 		$id_user 		= $data['id_user'];
+		$id_order 		= $data['id_order'];
 		$upload_path 	= $data['upload_path'];
 		$upload_url 	= $data['upload_url'];
 		$tmp 			= $data['tmp'];
 
-		$query = "INSERT INTO struk_payment (id_struk,id_user,struk_image,status) VALUES ('','".$id_user."','".$upload_url."',0)";
+		$query = "INSERT INTO struk_payment (id_struk,id_user,id_order,struk_image,status) VALUES ('','".$id_user."','".$id_order."','".$upload_url."',0)";
 		$sql = $this->db->query($query);
 
 		if ($sql) {
 			move_uploaded_file($tmp, $upload_path);
+			$this->send_message($id_user);
 			echo "<script>window.location.href='http://localhost/oop-shopping-cart/user/profile.php?success=true'</script>";
 		}else{
 			echo "<script>window.location.href='http://localhost/oop-shopping-cart/user/profile.php?error=true'</script>";

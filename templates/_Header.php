@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <title>Betta Shop</title>
+    <title>Batik Sleker</title>
     <link href="<?= __SHOP__ ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= __SHOP__ ?>assets/fontawesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= __SHOP__ ?>admin/libs/css/buttons.dataTables.min.css">

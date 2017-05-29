@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 21, 2017 at 11:09 
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Generation Time: May 29, 2017 at 04:19 
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -98,6 +98,14 @@ CREATE TABLE `order_product` (
   `deleted` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `order_product`
+--
+
+INSERT INTO `order_product` (`id_order`, `id_product`, `id_user`, `qty`, `size`, `account_name`, `amount`, `tax`, `total_price`, `out_of_date`, `order_date`, `status`, `deleted`) VALUES
+('ORD-0529-17-1', 'PRD-0416-17-19', 'USR-0406-17-2', '1', 'S', 'ratnasetyaningrum', 300000, 9000, 294000, '2017-06-01', '2017-05-29', 0, 0),
+('ORD-0529-17-2', 'PRD-0416-17-1', 'USR-0414-17-4', '2', 'M', 'Aisyah Anjani', 600000, 18000, 618000, '2017-06-01', '2017-05-29', 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -123,7 +131,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id_product`, `id_user`, `name`, `images`, `stock`, `id_cat`, `size`, `equity`, `price`, `created`, `updated`) VALUES
-('PRD-0416-17-1', 'USR-0406-17-1', 'Batik Wanita I', 'http://localhost/oop-shopping-cart/assets/images/product-img/PRD-0416-17-1-Batik-Wanita-I.jpg', 100, 2, 'S, M, L, XL ', 200000, 300000, '2017-04-16', '2017-04-23'),
+('PRD-0416-17-1', 'USR-0406-17-1', 'Batik Wanita I', 'http://localhost/oop-shopping-cart/assets/images/product-img/PRD-0416-17-1-Batik-Wanita-I.jpg', 98, 2, 'S, M, L, XL ', 200000, 300000, '2017-04-16', '2017-04-23'),
 ('PRD-0416-17-10', 'USR-0406-17-1', 'Kemeja Batik ', 'http://localhost/oop-shopping-cart/assets/images/product-img/PRD-0416-17-10-Kemeja-Batik-.jpg', 100, 2, 'S, M, L', 200000, 300000, '2017-04-16', '2017-04-17'),
 ('PRD-0416-17-11', 'USR-0406-17-1', 'Gamis  Batik Modern', 'http://localhost/oop-shopping-cart/assets/images/product-img/PRD-0416-17-11-Gamis--Batik-Modern.jpg', 100, 2, 'S, M, L, XL ', 150000, 250000, '2017-04-16', '2017-04-17'),
 ('PRD-0416-17-12', 'USR-0406-17-1', 'Kemeja Batik Panjang', 'http://localhost/oop-shopping-cart/assets/images/product-img/PRD-0416-17-12-Kemeja-Batik-Panjang.jpg', 100, 2, 'S, M, L', 150000, 200000, '2017-04-16', '2017-04-17'),
@@ -159,6 +167,7 @@ INSERT INTO `products` (`id_product`, `id_user`, `name`, `images`, `stock`, `id_
 CREATE TABLE `struk_payment` (
   `id_struk` int(11) NOT NULL,
   `id_user` varchar(50) NOT NULL,
+  `id_order` varchar(255) NOT NULL,
   `struk_image` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -167,9 +176,10 @@ CREATE TABLE `struk_payment` (
 -- Dumping data for table `struk_payment`
 --
 
-INSERT INTO `struk_payment` (`id_struk`, `id_user`, `struk_image`, `status`) VALUES
-(2, 'USR-0414-17-4', 'http://localhost/oop-shopping-cart/assets/images/struk_payment/25042017091343-USR-0414-17-4-struk-payment.png', 1),
-(3, 'USR-0406-17-2', 'http://localhost/oop-shopping-cart/assets/images/struk_payment/25042017103412-USR-0406-17-2-struk-payment.png', 1);
+INSERT INTO `struk_payment` (`id_struk`, `id_user`, `id_order`, `struk_image`, `status`) VALUES
+(2, 'USR-0414-17-4', '', 'http://localhost/oop-shopping-cart/assets/images/struk_payment/25042017091343-USR-0414-17-4-struk-payment.png', 1),
+(3, 'USR-0406-17-2', '', 'http://localhost/oop-shopping-cart/assets/images/struk_payment/25042017103412-USR-0406-17-2-struk-payment.png', 1),
+(4, 'USR-0414-17-4', 'ORD-0529-17-2', 'http://localhost/oop-shopping-cart/assets/images/struk_payment/29052017032950-USR-0414-17-4-struk-payment.png', 1);
 
 -- --------------------------------------------------------
 
@@ -249,7 +259,84 @@ INSERT INTO `transactions` (`id_transaction`, `id_order`, `id_product`, `id_user
 (68, '', '', '', 0, 0, '2017-05-19 04:53:03'),
 (69, '', '', '', 0, 0, '2017-05-19 04:53:15'),
 (70, '', '', '', 0, 0, '2017-05-19 04:53:39'),
-(71, '', '', '', 0, 0, '2017-05-19 04:54:11');
+(71, '', '', '', 0, 0, '2017-05-19 04:54:11'),
+(72, '', '', '', 0, 0, '2017-05-22 03:05:17'),
+(73, '', '', '', 0, 0, '2017-05-22 03:05:31'),
+(74, '', '', '', 0, 0, '2017-05-22 03:05:42'),
+(75, '', '', '', 0, 0, '2017-05-22 03:05:49'),
+(76, '', '', '', 0, 0, '2017-05-22 03:05:52'),
+(77, '', '', '', 0, 0, '2017-05-22 03:05:54'),
+(78, '', '', '', 0, 0, '2017-05-22 03:06:00'),
+(79, '', '', '', 0, 0, '2017-05-22 03:06:02'),
+(80, '', '', '', 0, 0, '2017-05-22 03:06:03'),
+(81, '', '', '', 0, 0, '2017-05-22 03:06:04'),
+(82, '', '', '', 0, 0, '2017-05-22 03:06:05'),
+(83, '', '', '', 0, 0, '2017-05-22 03:06:51'),
+(84, '', '', '', 0, 0, '2017-05-29 03:05:14'),
+(85, '', '', '', 0, 0, '2017-05-29 03:06:37'),
+(86, '', '', '', 0, 0, '2017-05-29 03:06:48'),
+(87, '', '', '', 0, 0, '2017-05-29 03:06:58'),
+(88, '', '', '', 0, 0, '2017-05-29 03:07:45'),
+(89, '', '', '', 0, 0, '2017-05-29 03:07:48'),
+(90, '', '', '', 0, 0, '2017-05-29 03:07:53'),
+(91, '', '', '', 0, 0, '2017-05-29 03:07:53'),
+(92, '', '', '', 0, 0, '2017-05-29 03:07:56'),
+(93, '', '', '', 0, 0, '2017-05-29 03:08:08'),
+(94, '', '', '', 0, 0, '2017-05-29 03:08:08'),
+(95, '', '', '', 0, 0, '2017-05-29 03:08:19'),
+(96, '', '', '', 0, 0, '2017-05-29 03:08:19'),
+(97, '', '', '', 0, 0, '2017-05-29 03:08:43'),
+(98, '', '', '', 0, 0, '2017-05-29 03:09:01'),
+(99, '', '', '', 0, 0, '2017-05-29 03:09:04'),
+(100, '', '', '', 0, 0, '2017-05-29 03:09:09'),
+(101, '', '', '', 0, 0, '2017-05-29 03:09:14'),
+(102, '', '', '', 0, 0, '2017-05-29 03:09:48'),
+(103, '', '', '', 0, 0, '2017-05-29 03:12:53'),
+(104, '', '', '', 0, 0, '2017-05-29 03:13:02'),
+(105, '', '', '', 0, 0, '2017-05-29 03:13:03'),
+(106, '', '', '', 0, 0, '2017-05-28 19:50:54'),
+(107, '', '', '', 0, 0, '2017-05-28 19:51:41'),
+(108, '', '', '', 0, 0, '2017-05-28 19:52:00'),
+(109, '', '', '', 0, 0, '2017-05-28 19:52:26'),
+(110, '', '', '', 0, 0, '2017-05-28 19:53:27'),
+(111, '', '', '', 0, 0, '2017-05-28 19:53:58'),
+(112, '', '', '', 0, 0, '2017-05-28 19:54:36'),
+(113, '', '', '', 0, 0, '2017-05-28 19:57:30'),
+(114, '', '', '', 0, 0, '2017-05-28 20:00:48'),
+(115, '', '', '', 0, 0, '2017-05-28 20:01:18'),
+(116, '', '', '', 0, 0, '2017-05-28 20:01:21'),
+(117, '', '', '', 0, 0, '2017-05-28 20:10:57'),
+(118, '', '', '', 0, 0, '2017-05-28 20:10:59'),
+(119, '', '', '', 0, 0, '2017-05-28 20:11:07'),
+(120, '', '', '', 0, 0, '2017-05-28 20:11:07'),
+(121, '', '', '', 0, 0, '2017-05-28 20:11:11'),
+(122, '', '', '', 0, 0, '2017-05-28 20:11:18'),
+(123, '', '', '', 0, 0, '2017-05-28 20:11:18'),
+(124, '', '', '', 0, 0, '2017-05-28 20:11:30'),
+(125, '', '', '', 0, 0, '2017-05-28 20:11:31'),
+(126, '', '', '', 0, 0, '2017-05-28 20:12:05'),
+(127, '', '', '', 0, 0, '2017-05-28 20:13:52'),
+(128, '', '', '', 0, 0, '2017-05-28 20:21:40'),
+(129, '', '', '', 0, 0, '2017-05-28 20:29:37'),
+(130, '', '', '', 0, 0, '2017-05-28 20:29:50'),
+(131, '', '', '', 0, 0, '2017-05-28 20:29:50'),
+(132, '', '', '', 0, 0, '2017-05-28 20:30:11'),
+(133, '', '', '', 0, 0, '2017-05-28 20:30:24'),
+(134, '', '', '', 0, 0, '2017-05-28 20:30:32'),
+(135, '', '', '', 0, 0, '2017-05-28 20:30:40'),
+(136, '', '', '', 0, 0, '2017-05-28 20:30:46'),
+(137, '', '', '', 0, 0, '2017-05-28 20:30:52'),
+(138, '', '', '', 0, 0, '2017-05-28 20:30:54'),
+(139, '', '', '', 0, 0, '2017-05-28 20:30:56'),
+(140, '', '', '', 0, 0, '2017-05-28 20:30:58'),
+(141, '', '', '', 0, 0, '2017-05-28 20:31:05'),
+(142, '', '', '', 0, 0, '2017-05-28 20:31:09'),
+(143, '', '', '', 0, 0, '2017-05-28 20:32:31'),
+(144, '', '', '', 0, 0, '2017-05-28 20:35:17'),
+(145, '', '', '', 0, 0, '2017-05-28 20:35:55'),
+(146, '', '', '', 0, 0, '2017-05-28 20:40:22'),
+(147, '', '', '', 0, 0, '2017-05-28 20:40:24'),
+(148, 'ORD-0529-17-2', 'PRD-0416-17-1', 'USR-0414-17-4', 618000, 600000, '2017-05-28 20:40:28');
 
 -- --------------------------------------------------------
 
@@ -278,7 +365,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `firstname`, `lastname`, `address`, `zip_code`, `phone`, `email`, `id_member`, `created`, `updated`, `status`) VALUES
-('USR-0406-17-1', 'trojan302', 'ff4bfa36728e07ff94060af8b9c7c646', 'Imam', 'Ali Mustofa', 'Jl. Ketepeng II N0. 9', 54126, '085878434313', 'bettadevindonesia@gmail.com', 3, '2017-04-06', NULL, 1),
+('USR-0406-17-1', 'Fatim', '21232f297a57a5a743894a0e4a801fc3', 'Fatim', 'Aja', 'Jl. Ketepeng II N0. 9', 54126, '085878434313', 'fatimaja@gmail.com', 3, '2017-04-06', NULL, 1),
 ('USR-0406-17-2', 'trojan302', '799fc1bc692718127091b554c336d108', 'Ratna', 'Setyaningrum', 'Tempuran, Magelang Kabupaten', 52461, '085743248560', 'ratnasetya209@gmail.com', 2, '2017-04-06', NULL, 1),
 ('USR-0406-17-3', 'kiting', 'ee11cbb19052e40b07aac0ca060c23ee', 'Faried', 'Aziez', 'Magelang', 52417, '081245678987', 'atlitgundu01@gmail.com', 1, '2017-04-06', NULL, 1),
 ('USR-0414-17-4', 'aisyahanjani', 'ee11cbb19052e40b07aac0ca060c23ee', 'Aisyah', 'Anjani', 'Borobudur, Kabupaten Magelang', 52456, '081245679909', 'aisyahanjani@gmail.com', 1, '2017-04-14', NULL, 1),
@@ -453,7 +540,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `categories`
 --
@@ -468,12 +555,12 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT for table `struk_payment`
 --
 ALTER TABLE `struk_payment`
-  MODIFY `id_struk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_struk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id_transaction` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id_transaction` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 --
 -- Constraints for dumped tables
 --

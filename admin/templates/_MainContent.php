@@ -22,7 +22,7 @@
           <div class="panel-body tasks">
             <span style="font-size: 2.5em;"><small><?= $generator->IDR($payments->get_total_earnings()) ?></small></span>
           </div>
-          <div class="panel-footer">Total Earnings</div>
+          <div class="panel-footer">Total Pendapatan</div>
         </div>
      </div>
      <div class="col-md-3">
@@ -30,7 +30,7 @@
           <div class="panel-body products">
             <i class="fa fa-shopping-bag fa-3x"></i> &nbsp; <span class="counter"><?= $num_products ?></span>
           </div>
-          <div class="panel-footer">Products</div>
+          <div class="panel-footer">Total Produk</div>
         </div>
      </div>
      <div class="clearfix"></div>
@@ -40,7 +40,7 @@
    <div class="row-fluid">
      <div class="col-md-6">
        <div class="panel panel-default">
-        <div class="panel-heading"><b>Transactions</b></div>
+        <div class="panel-heading"><b>Grafik Transaksi</b></div>
         <div class="panel-body">
           <div id="line-chart" style="width:100%"></div>
         </div>
@@ -49,7 +49,7 @@
 
      <div class="col-md-6">
        <div class="panel panel-default">
-        <div class="panel-heading"><b>Earnings</b></div>
+        <div class="panel-heading"><b>Grafik Pendapatan</b></div>
         <div class="panel-body">
           <div id="area-chart" style="width:100%;"></div>
         </div>
@@ -58,16 +58,16 @@
 
      <div class="col-md-6">
        <div class="panel panel-default">
-        <div class="panel-heading"><b>Pages</b></div>
+        <div class="panel-heading"><b>Tabel Pendapatan / Tanggal</b></div>
         <div class="panel-body">
           <table class="table table-condensed table-hover">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Date Transactions</th>
+                <th>Tanggal Traksaksi</th>
                 <th>Total</th>
-                <th>Gross Income</th>
-                <th>Net Income</th>
+                <th>Pendapatan Kotor</th>
+                <th>Pendapatan Besih</th>
               </tr>
             </thead>
             <tbody>
@@ -88,14 +88,14 @@
 
      <div class="col-md-6">
        <div class="panel panel-default">
-        <div class="panel-heading"><b>Categories</b></div>
+        <div class="panel-heading"><b>Tabel Kategori</b></div>
         <div class="panel-body">
           <table class="table table-condensed table-hover">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Categories Initial</th>
-                <th>Categories Name</th>
+                <th>Inisial Kategori</th>
+                <th>Nama Kategori</th>
               </tr>
             </thead>
             <tbody>
@@ -118,19 +118,19 @@
         <thead>
           <tr>
             <th>ID Products</th>
-            <th>Name</th>
-            <th>Categories</th>
-            <th>Size</th>
-            <th>Stock</th>
-            <th>Equity</th>
-            <th>Price</th>
-            <th>Actions</th>
+            <th>Nama</th>
+            <th>Kategori</th>
+            <th>Ukuran</th>
+            <th>Stok</th>
+            <th>Modal Awal</th>
+            <th>Harga Jual</th>
+            <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
         <?php if ($num_products == 0) { ?>
           <tr>
-            <td colspan="8" align="center" class="bg-danger"><span class="label label-danger">Data Not Found!</span></td>
+            <td colspan="8" align="center" class="bg-danger"><span class="label label-danger">Data Tidak Ada!</span></td>
           </tr>
         <?php 
         } else { 
@@ -168,9 +168,10 @@
         </tbody>
       </table>
 
+      <br>
 
+<!--
   <div class="row">
-    <!-- Tasks Content -->
     <div class="col-md-4">
       <ul class="list-group">
         <h4 class="list-group-item-heading"><i class="fa fa-tasks"></i> Tasks Rountine</h4>
@@ -235,3 +236,5 @@
         </div>
     </div>
 </div>
+
+-->

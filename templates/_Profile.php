@@ -31,15 +31,32 @@
 				  <p>Uploading successfully!</p>
 				</div>
 				<?php endif; ?>
-				<form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST" enctype="multipart/form-data">
-					<div class="form-group">
+				<form action="" method="POST" enctype="multipart/form-data" class="panel panel-primary"">
+				<div class="panel-heading">Upload Payment</div>
+					<div class="panel-content form-group" style="padding:10px;">
 						<label>Upload Struk Transfer</label>
 						<div class="input-group">
 					      <input type="file" class="form-control" name="struk_transfer">
-					      <span class="input-group-btn">
-					        <button class="btn btn-default" type="submit">Send!</button>
+					      <span class="input-group-addon">
+					        <i class="fa fa-paperclip"></i> Struk Payment
 					      </span>
 					    </div>
+					    <br>
+					    <label>Your Orders</label>
+					    <div class="form-group">
+					      <select name="id_order" class="form-control">
+					      	<option value="">-- Your Orders --</option>
+					      	<?php foreach ($user->get_user_order($_SESSION['users']) as $data): ?>
+					      		<?php if ($data['O_STATUS'] != 1): ?>
+							      	<option value="<?= $data['O_ID_ORDER'] ?>">
+							      		<?= $data['O_PRODUCT'] ?>  (<?= $data['O_QTY'] ?>)
+							      	</option>
+					      		<?php endif ?>
+					      	<?php endforeach ?>
+					      </select>
+					    </div>
+
+				        <button class="btn btn-default" type="submit">Send!</button>
 						<input type="hidden" name="id_user" value="<?= $_SESSION['users'] ?>">
 					</div>
 				</form>

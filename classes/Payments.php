@@ -5,7 +5,7 @@ class Payments extends Database
 	public function get_user_payments_status($id_user)
 	{
 
-		$query = "SELECT status FROM struk_payment WHERE id_user='".$id_user."'";
+		$query = "SELECT status FROM struk_payment WHERE id_user='".$id_user."' ORDER BY id_struk DESC";
 		$sql = $this->db->query($query);
 		$result = $sql->fetch_assoc();
 
