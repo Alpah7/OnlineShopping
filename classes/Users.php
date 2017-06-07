@@ -230,6 +230,136 @@ class Users extends Database
 		return $result;
 
 	}
+
+	public function ganti_password($data){
+
+		$old_password = $data['old_password'];
+		$pass_hash = md5($old_password);
+
+		$new_password = $data['new_password'];
+		$re_new_password = $data['re_new_password'];
+
+		$id_user = $data['id_user'];
+		$now = date('Y-m-d');
+
+		$query 	= "SELECT password FROM users WHERE id_user='".$id_user."'";
+		$sql	= $this->db->query($query);
+		$result = $sql->fetch_assoc();
+
+		if ($pass_hash == $result['password']) {
+
+			if ($new_password === $re_new_password) {
+				
+				$query 		= "UPDATE users SET password=md5('".$new_password."'), updated='".$now."' WHERE id_user='".$id_user."'";
+				$update		= $this->db->query($query);
+
+				if ($update == true) {
+					$msg = array(
+						'msg' => 'Password anda berhasil diganti',
+						'status' => true
+					);					
+				}else{
+					$msg = array(
+						'msg'=> 'Password anda gagal diganti',
+						'status'=> false
+					);
+				}
+
+			}else{
+				$msg = array(
+					'msg' => 'Password baru tidak sama!',
+					'status' => false
+				);
+			}
+
+		}else{
+			$msg = array(
+				'msg' => 'Password lama tidak sama!',
+				'status' => false
+			);
+		}
+
+		return $msg;
+
+	}
+
+	public function ganti_foto($data){
+
+		$now = date('Y-m-d');
+
+		$query = "UPDATE users SET foto='".$data['foto']."', updated='".$now."' WHERE id_user='".$data['id_user']."'";
+		$sql = $this->db->query($query);
+
+		return $sql;
+
+	}
+
+	public function update_admin_profile($data){
+
+		if (is_array($data)) {
+			
+			$id_user = $data['id_user'];
+			$firstname = $data['firstname'];
+			$lastname = $data['lastname'];
+			$email = $data['email'];
+			$address = $data['address'];
+			$zip_code = $data['zip_code'];
+			$phone = $data['phone'];
+			$no_rek = $data['no_rek'];
+
+			$query = "UPDATE `users` SET `username`='".$username."',`firstname`='".$firstname."',`lastname`='".$lastname."',`address`='".$address."',`zip_code`='".$zip_code."',`phone`='".$phone."',`email`='".$email."', `no_rek`='".$no_rek."' WHERE `id_user`='".$id_user."'";
+			$update = $this->db->query($query);
+
+			return $update;
+
+		}
+
+	}
+
+	public function check_pass($id_user, $old_pass){
+		
+		$query = "SELECT password FROM users WHERE id_user='".$id_user."'";
+		$sql = $this->db->query($query);
+		$result = $sql->fetch_assoc();
+		$status='';
+
+		if (md5($old_pass) != $result['password']) {
+			$status = false;
+		}else{
+			$status = true;
+		}
+
+		return $status;
+
+	}
+
+	public function update_admin_password($data){
+
+		if (is_array($data)) {
+			
+			$id_user = $data['id_user'];
+			$old_pass = $data['old_pass'];
+			$new_pass = $data['new_pass'];
+			$updated   = date('Y-m-d');
+
+			$query = "UPDATE `users` SET `password`='".md5($new_pass)."', `updated`='".$updated."' WHERE `id_user`='".$id_user."'";
+			$update = $this->db->query($query);
+
+			return $update;
+
+		}
+
+	}
+
+	public function no_rekening(){
+
+		$query = "SELECT no_rek FROM users WHERE id_user='USR-0406-17-1'";
+		$sql = $this->db->query($query);
+		$result = $sql->fetch_assoc();
+
+		return rtrim(chunk_split($result['no_rek'],4,'-'), '-');
+
+	}
 	
 }
 

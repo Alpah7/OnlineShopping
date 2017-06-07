@@ -5,7 +5,11 @@
 	<div class="container row">
 
 		<div class="col-lg-3 text-center">
-			<img src="http://fakeimg.pl/250x250/222/fff/?text=<?= $_SESSION['firstname'] ?>&font=lobster" class="img-circle">
+			<?php if ($dataUser['foto'] == ''): ?>
+				<img src="../assets/images/users/hermit-crab.svg" class="img-circle">
+			<?php else: ?>
+				<img src="<?= $dataUser['foto'] ?>" class="img-circle img-responsive">
+			<?php endif ?>
 			<hr>
 			<h3><?= $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?></h3>
 			<div class="text-left">
@@ -65,53 +69,70 @@
 
 		<div class="col-lg-9">
 			
-			<h2>Your Orders!</h2>
-			<hr>
-
-			<table id="table_order_user" class="table table-bordered table-hover table-striped small">
-				<thead>
-					<tr>
-						<th class="text-center">ORDER ID</th>
-						<th class="text-center">Product Name</th>
-						<th class="text-center">Qty</th>
-						<th class="text-center">Size</th>
-						<th class="text-center">Amount</th>
-						<th class="text-center">Tax</th>
-						<th class="text-center">Total Shipping</th>
-						<th class="text-center">Order Status</th>
-					</tr>
-				</thead>
-				<tbody>
-				<?php if ($user->get_num_order($_SESSION['users']) > 0): ?>
-				<?php foreach ($user->get_user_order($_SESSION['users']) as $data): ?>
-					<?php if ($data['O_DELETED'] != 1): ?>
-						
-					<tr <?php if ($data['O_STATUS'] == 1): ?> class="success" <?php else: ?> class="danger" <?php endif ?> >
-						<td><?= $data['O_ID_ORDER'] ?></td>
-						<td><?= $data['O_PRODUCT'] ?></td>
-						<td><?= $data['O_QTY'] ?></td>
-						<td><?= $data['O_SIZE'] ?></td>
-						<td><?= $generator->IDR($data['O_AMOUNT']) ?></td>
-						<td><?= $generator->IDR($data['O_TAX']) ?></td>
-						<td><?= $generator->IDR($data['O_TOTAL_PRICE']) ?></td>
-						<td class="text-center">
-							<?php if ($data['O_STATUS'] == 0): ?>
-								<label class="label label-danger">Pending...</label>
-							<?php else: ?>
-								<a id="delete_order_user" href="javascipt:;" data-user-order="<?= $data['O_ID_ORDER'] ?>" title="delete from order table"><label class="label label-success"><i class="fa fa-truck"></i> Process...</label></a>
-							<?php endif ?>
-						</td>
-					</tr>
-					<?php endif ?>
-					
-				<?php endforeach ?>
-				<?php else: ?>
-					<tr>
-						<td colspan="10" align="center">Data Order is Empty</td>
-					</tr>
+			<?php if (isset($_GET['hal']) == 'ganti_password'): ?>
+				<h2>Ganti Password</h2>
+				<?php if (isset($_GET['berhasil'])): ?>
+					<div class="alert alert-success alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <?= $_GET['berhasil'] ?>
+					</div>
+				<?php elseif (isset($_GET['gagal'])): ?>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <?= $_GET['gagal'] ?>
+					</div>
 				<?php endif ?>
-				</tbody>
-			</table>
+				<hr>
+				<form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
+					<div class="form-group">
+						<label for="">Password Lama</label>
+						<input type="password" name="old_password" placeholder="Password Lama" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label for="">Password baru</label>
+						<input type="password" name="new_password" placeholder="Password Baru" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label for="">Re-Password baru</label>
+						<input type="password" name="re_new_password" placeholder="Ulangi Password Baru" class="form-control" required>
+					</div>
+					<input type="hidden" name="id_user" value="<?= $_SESSION['users'] ?>">
+					<input type="hidden" name="url" value="<?= __SHOP__ . $_SESSION['scopes'] ?>">
+					<input type="submit" name="ganti" value="Ganti Password" class="btn btn-default btn-sm">
+					<a href="http://localhost/oop-shopping-cart/member/profile.php" class="btn btn-danger btn-sm">Kembali</a>
+				</form>
+			<?php elseif (isset($_GET['page']) == 'ganti_foto_profil'): ?>
+				<h2>Ganti Foto Profil</h2>
+				<?php if (isset($_GET['berhasil'])): ?>
+					<div class="alert alert-success alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <?= $_GET['berhasil'] ?>
+					</div>
+				<?php elseif (isset($_GET['gagal'])): ?>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <?= $_GET['gagal'] ?>
+					</div>
+				<?php endif ?>
+				<hr>
+
+				<form action="<?= $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data" method="POST">
+					<div class="help-block">
+						<p><span class="glyphicon glyphicon-info-sign"></span> &nbsp; Gambar yang diunggah harus mempunyai ekstensi JPG, JPEG, PNG, dan GIF.</p>
+					</div>
+					<div class="form-group">
+						<input type="file" name="foto" class="form-control" required>
+					</div>
+					<input type="hidden" name="id_user" value="<?= $_SESSION['users'] ?>">
+					<input type="hidden" name="url" value="<?= __SHOP__ . $_SESSION['scopes'] ?>">
+					<input type="submit" name="upload" value="Ganti Foto" class="btn btn-sm btn-default">
+					<a href="http://localhost/oop-shopping-cart/<?= $_SESSION['scopes'] ?>profile.php" class="btn btn-danger btn-sm">Kembali</a>
+				</form>
+
+			<?php else: ?>
+				<?php require_once '_OrderDetails.php'; ?>
+			<?php endif ?>
+			
 		</div>
 	</div>
 

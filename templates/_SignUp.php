@@ -64,9 +64,6 @@
   </div>
 </form>
 
-  <hr>
 
-  <footer>
-    <p>&copy; Betta Shop <?= date('Y') ?></p>
-  </footer>
+<br><br><br><br><br>
 </div> <!-- /container -->

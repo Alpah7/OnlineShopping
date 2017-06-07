@@ -13,7 +13,11 @@
       <a class="navbar-brand" href="<?= __SHOP__?>"><i class="fa fa-shopping-bag"></i> Batik Sleker Asri</a>
       <?php } ?>
       <ul class="nav navbar-nav">
+      <?php if (!empty($_SESSION['scopes'])) { ?>
+          <li class="active"><a href="<?= __SHOP__ . $_SESSION['scopes'] ?>">Beranda</a></li>
+      <?php }else{ ?>
           <li class="active"><a href="<?= __SHOP__?>">Beranda</a></li>
+      <?php } ?>
           <li><a href="#">Tentang Kami</a></li>
           <li><a href="#">Kontak Kami</a></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Tips? <span class="caret"></span></a>
@@ -26,13 +30,14 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lainnya <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="shippings.php">Pengiriman</a></li>
-              <li><a href="t-o-t-m.php">Transaksi Bulan Ini</a></li>
-              <li><a href="hot_sales.php">Item Terlaris</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="payment.php">Pembayaran Barang</a></li>
               <li class="disabled"><a href="javascript:;">QrCode Payment System</a></li>
             </ul>
           </li>
+          <?php if (isset($_SESSION['users'])): ?>
+            <li><p class="navbar-text">Pembayaran: <?= $user->no_rekening(); ?></p></li>
+          <?php endif ?>
         </ul>
     </div>
     <?php if (!empty($_SESSION['users'])) { ?>
@@ -75,9 +80,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= ucfirst($_SESSION['firstname']) ?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="profile.php">Profile</a></li>
-            <li><a href="#">Change password</a></li>
-            <li><a href="#">Change Image Profile</a></li>
+            <li><a href="profile.php">Profil</a></li>
+            <li><a href="profile.php?hal=ganti_password">Ganti Password</a></li>
+            <li><a href="profile.php?page=ganti_foto_profil">Ganti Foto Profil</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="logout.php">Logout</a></li>
           </ul>

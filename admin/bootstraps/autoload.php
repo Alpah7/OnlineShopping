@@ -16,6 +16,7 @@ require_once '../classes/init.php';
 require_once '../actions/UserActions.php';
 require_once '../actions/CategoriesAction.php';
 require_once '../actions/ProductAction.php';
+require_once '../actions/SettingsAction.php';
 
 
 ?>

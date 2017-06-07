@@ -38,8 +38,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i> Opsi <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><i class="fa fa-cogs"></i> Pengaturan Umum</a></li>
-            <li><a href="#"><i class="fa fa-fort-awesome"></i> Sosial Media</a></li>
+            <li><a href="settings.php"><i class="fa fa-cogs"></i> Pengaturan Umum</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="<?= __SHOP__ ?>admin/logout.php"><i class="fa fa-minus-circle"></i> Keluar</a></li>
           </ul>
