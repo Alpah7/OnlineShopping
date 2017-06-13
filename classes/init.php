@@ -23,7 +23,9 @@ $cart 			= new Cart();
 
 /* Admin Private Initialized */
 
+
 $payments = new Payments();
+$all_payments = $payments->get_all_data_payments();
 
 $admin = new AdminNotifications();
 $notif = $admin->get_user_notifications();

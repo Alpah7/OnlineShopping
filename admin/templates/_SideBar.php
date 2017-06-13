@@ -34,9 +34,8 @@
         <li class="list-group-item-heading"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree"><i class="fa fa-money"></i> Laporan <i class="pull-right glyphicon glyphicon-chevron-down"></i></a></li>
         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
           <ul class="nav nav-pills nav-stacked">
-            <li><a href="#"><i class="fa fa-folder-open"></i> Laporan Produk</a></li>
-            <li><a href="#"><i class="fa fa-folder-open"></i> Laporan Order</a></li>
-            <li><a href="#"><i class="fa fa-folder-open"></i> Laporan Transaksi</a></li>
+            <li><a href="<?= __SHOP__ ?>admin/laporan_produk.php"><i class="fa fa-folder-open"></i> Laporan Produk</a></li>
+            <li><a href="<?= __SHOP__ ?>admin/laporan_transaksi.php"><i class="fa fa-folder-open"></i> Laporan Transaksi</a></li>
           </ul>
     </ul>
     <hr>

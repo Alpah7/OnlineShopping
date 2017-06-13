@@ -4,8 +4,8 @@
 	<hr>
 	
 	<ul>
-		<li>Login for your account if you have, if your don't have account in Betta Shop you can <a href="signup.php" title="Sign Up">Sign Up</a> to create your account.</li>
-		<li>Choose some item, size of item, and how many you want.</li>
+		<li>Login terlebih dahulu dengan akun anda jika sudah memilikinya, jika belum mempunyai akun ada bisa mendaftarkan diri ke Betta Shop <a href="signup.php" title="Daftar">Daftar</a> untuk membuat akun anda.</li>
+		<li>Pilih barang anda sesusai kebutuhan.</li>
 		<li>Click <code class="text-primary"><i class="fa fa-shopping-cart"></i> Cart Icon</code> and you can view your items.</li>
 		<li>Click <code class="text-primary"><i class="fa fa-shopping-cart"></i> Cart Icon > View All items</code> to details of the cart.</li>
 		<li>Update your cart if you want.</li>

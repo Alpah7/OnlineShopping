@@ -19,8 +19,8 @@
       	<thead>
       		<tr>
       			<th class="text-center">#</th>
-      			<th class="text-center">Name</th>
-      			<th class="text-center">Initial</th>
+      			<th class="text-center">Nama Kategori</th>
+      			<!-- <th class="text-center">Initial</th> -->
       			<th class="text-center">Actions</th>
       		</tr>
       	</thead>
@@ -29,7 +29,7 @@
       		<tr>
       			<td><?= $no++ ?></td>
       			<td><?= $data['name'] ?></td>
-      			<td><?= $data['initial'] ?></td>
+      			<!-- <td><?= $data['initial'] ?></td> -->
       			<td>
 					<a href="?id_cat=<?= $data['id_cat'] ?>" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
     				<a href="javascript:;" data-idCategory="<?= $data['id_cat'] ?>" class="edit-dataCategory btn btn-xs btn-warning"><i class="fa fa-pencil"></i></a>

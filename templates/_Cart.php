@@ -6,10 +6,10 @@
 		<table class="table table-condensed table-hover table-striped">
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>Size</th>
-					<th>Qty</th>
-					<th>Price</th>
+					<th>Nama Barang</th>
+					<th>Ukuran</th>
+					<th>Jumlah</th>
+					<th>Harga</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -46,24 +46,24 @@
 	</div>
 	<div class="col-md-4" style="padding-top: 70px;">
 		<div class="panel panel-primary">
-		<div class="panel-heading text-center"><h4><i class="fa fa-truck"></i> Shipping</h4></div>
+		<div class="panel-heading text-center"><h4><i class="fa fa-truck"></i> Pengiriman</h4></div>
 		  <div class="panel-body">
 		  <table width="100%">
 		  <?php $data_user = $user->get_user_details($_SESSION['users']); ?>
 		  	<tr>
-		  		<th>Name</th>
+		  		<th>Nama Lengkap</th>
 		  		<td>: <?= $data_user['firstname'] .' '. $data_user['lastname'] ?></td>
 		  	</tr>
 		  	<tr>
-		  		<th>Address</th>
+		  		<th>Alamat</th>
 		  		<td>: <?= $data_user['address'] ?></td>
 		  	</tr>
 		  	<tr>
-		  		<th>Zip Code</th>
+		  		<th>Kode Pos</th>
 		  		<td>: <?= $data_user['zip_code'] ?></td>
 		  	</tr>
 		  	<tr>
-		  		<th>Phone</th>
+		  		<th>Telepon</th>
 		  		<td>: <?= $data_user['phone'] ?></td>
 		  	</tr>
 		  	<tr>
@@ -74,18 +74,18 @@
 		  <hr>
 		  <table width="100%">
 		  	<tr>
-		  		<th>Tax</th>
-		  		<td>: 3%</td>
-		  	</tr>
-		  	<tr>
-		  		<th>Discount</th>
+		  		<th>Diskon</th>
 		  		<td>: <?= $discount = ($_SESSION['scopes'] == 'member/') ? '5%' : '0%'; ?></td>
 		  	</tr>
 		  	<tr>
-		  		<th>Total Shipping</th>
+		  		<th>Total Bayar</th>
 		  		<td>: <?= $generator->IDR((int)($cart->cart_rules($_SESSION['users'], $cart->total_price_cart($_SESSION['users'])))) ?></td>
 		  	</tr>
 		  </table>
+		  <br>
+		  <div class="help-block">
+		  	* Setiap pembelian sudah termasuk pajak.
+		  </div>
 		  </div>
 		  <div class="panel-footer">
 		  	<?php if ($cart->total_price_cart($_SESSION['users']) == 0): ?>
@@ -103,3 +103,5 @@
 	</div>
 
 </div>
+
+<br><br><br><br><br><br>

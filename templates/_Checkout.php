@@ -19,17 +19,17 @@
 	<p class="help-block">ORDER ID</p>
 	<div class="text-left">
 	<p><b>Read Me</b></p>
-	<p class="text-justify">The account number you entered is evidence that you are doing the transaction, we will ship the item when you've paid the Bill. Our order will delete after 3 days if no do not continue.</p>
+	<p class="text-justify">Barang yang anda pesan akan kami proses setelah anda melakukan pembayaran untuk barang yang anda beli. Jika selama 3 hari anda tidak melakukan pembayaran maka pesanan anda kami hapus dari daftar pesanan.</p>
 	</div>
 	</div>
 	<div class="col-md-4">
 		<form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST" class="text-left">
 			<div class="form-group">
-				<label for="name_of_account">Account Name</label>
-				<input type="text" name="name_of_account" placeholder="Account Name" class="form-control" required>
+				<label for="name_of_account">Nama Pembeli</label>
+				<input type="text" name="name_of_account" value="<?= $_SESSION['firstname'] .' '. $_SESSION['lastname'] ?>" readonly class="form-control" required>
 			</div>
 			<div class="form-group">
-				<label for="amount">Amount</label><br>
+				<label for="amount">Total Bayar</label><br>
 				<?php if ($_SESSION['scopes'] == 'member/'): ?>
 					
 				<input type="text" value="<?= number_format( $_SESSION['total_price'] - ($_SESSION['total_price'] * 0.05) + ($_SESSION['total_price']*0.03) , 2, ',', '.') ?>" readonly class="form-control">
@@ -38,7 +38,9 @@
 				<?php endif ?>
 			</div>
 			<div class="help-block">
-				<p><i class="glyphicon glyphicon-info-sign"></i> Become member and get low tax in every transaction.</p>
+				<?php if (!$_SESSION['scopes'] == 'member/'): ?>
+				<p><i class="glyphicon glyphicon-info-sign"></i> Jadilah member dan dapatkan diskon setiap transaksi.</p>					
+				<?php endif ?>
 			</div>
 			<input type="hidden" name="amount" value="<?= $_SESSION['total_price'] ?>">
 			<input type="hidden" name="id_order" value="<?= $generator->orderID() ?>">
@@ -52,10 +54,10 @@
 		<table class="table table-condensed table-hover table-striped">
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>Size</th>
-					<th>Qty</th>
-					<th>Price</th>
+					<th>Nama Barang</th>
+					<th>Ukuran</th>
+					<th>Jumlah</th>
+					<th>Harga</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -74,29 +76,29 @@
 			<?php } ?>
 			<?php endif; ?>
 			<tr>
-				<td colspan="3" align="right">Total Price :</td>
+				<td colspan="3" align="right">Total Bayar :</td>
 				<td><?= $generator->IDR($cart->total_price_cart($_SESSION['users'])) ?></td>
 			</tr>
 			<?php if ($_SESSION['scopes'] == 'member/'): ?>
-			<tr>
+<!-- 			<tr>
 				<td colspan="3" align="right">Tax :</td>
 				<td><?= $tax = ($_SESSION['scopes'] == 'member/') ? $generator->IDR(($_SESSION['total_price']*0.03)) : $generator->IDR(($_SESSION['total_price']*0.03)); ?></td>
-			</tr>
+			</tr> -->
 			<tr>
-				<td colspan="3" align="right">Discount :</td>
+				<td colspan="3" align="right">Diskon :</td>
 				<td><?= $tax = ($_SESSION['scopes'] == 'member/') ? $generator->IDR( ($_SESSION['total_price'] * 0.05) ) : $generator->IDR($_SESSION['total_price']); ?></td>
 			</tr>
 			<tr>
-				<td colspan="3" align="right">Total Shipping :</td>
+				<td colspan="3" align="right">Total Bayar selatah Diskon :</td>
 				<td><?= $generator->IDR( $_SESSION['total_price'] - ($_SESSION['total_price'] * 0.05) + ($_SESSION['total_price']*0.03) ) ?></td>
 			</tr>
 			<?php else: ?>
-			<tr>
+			<!-- <tr>
 				<td colspan="3" align="right">Tax :</td>
 				<td><?= $tax = ($_SESSION['scopes'] == 'member/') ? $generator->IDR(($_SESSION['total_price']*0.03)) : $generator->IDR(($_SESSION['total_price']*0.03)); ?></td>
-			</tr>
+			</tr> -->
 			<tr>
-				<td colspan="3" align="right">Total Shipping :</td>
+				<td colspan="3" align="right">Total Bayar :</td>
 				<td><?= $generator->IDR( ($_SESSION['total_price']) + ($_SESSION['total_price']*0.03) ) ?></td>
 			</tr>
 			<?php endif; ?>
@@ -106,3 +108,5 @@
 	</div>
 
 </div>
+
+<br><br><br>

@@ -66,7 +66,6 @@ class Users extends Database
 	public function sign_up($data){
 
 		$id_user = $data['id_user'];
-		$username = $data['username'];
 		$firstname = $data['firstname'];
 		$lastname = $data['lastname'];
 		$phone = $data['phone'];
@@ -78,7 +77,7 @@ class Users extends Database
 		$created = $data['created'];
 		$status = ($data['member'] == 2) ? 0 : 1;
 
-		$query = "INSERT INTO `users`(`id_user`, `username`, `password`, `firstname`, `lastname`, `address`, `zip_code`, `phone`, `email`, `id_member`, `created`, `updated`, `status`) VALUES ('".$id_user."','".$username."','".$password."','".$firstname."','".$lastname."','".$address."','".$zip_code."','".$phone."','".$email."','".$member."','".$created."',NULL,'".$status."')";
+		$query = "INSERT INTO `users`(`id_user`, `password`, `firstname`, `lastname`, `address`, `zip_code`, `phone`, `email`, `id_member`, `created`, `updated`, `status`) VALUES ('".$id_user."','".$username."','".$password."','".$firstname."','".$lastname."','".$address."','".$zip_code."','".$phone."','".$email."','".$member."','".$created."',NULL,'".$status."')";
 		$sql = $this->db->query($query);
 
 		if($sql){

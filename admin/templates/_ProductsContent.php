@@ -15,16 +15,16 @@
 		</div>
 		<?php } ?>
 
-      <table id="table_products" class="table table-striped table-hover table-condensed table-bordered">
+      <table id="table_products" class="table table-striped table-hover table-condensed table-bordered small">
       	<thead>
       		<tr>
-      			<th>ID Products</th>
-      			<th>Name</th>
-      			<th>Categories</th>
-      			<th>Size</th>
-      			<th>Stock</th>
-      			<th>Equity</th>
-      			<th>Price</th>
+      			<th>ID Produk</th>
+      			<th>Nama Produk</th>
+      			<th>Kategori</th>
+      			<th>Ukuran</th>
+      			<th>Stok</th>
+      			<th>Modal</th>
+      			<th>Harga</th>
       			<th>Actions</th>
       		</tr>
       	</thead>

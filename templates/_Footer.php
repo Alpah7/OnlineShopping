@@ -4,7 +4,6 @@
 	    
 	    <div class="col-md-4">
 	      <h2>Batik Sleker Asri</h2>
-	      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae eos vero, repellendus voluptatem. Neque accusamus ipsa, pariatur dolore laudantium, labore praesentium quia, reprehenderit iusto obcaecati temporibus. In minus, perspiciatis ut.</p>
 	    </div>
 
 	    <div class="col-md-8">
@@ -12,11 +11,11 @@
 	      <div class="row-fluid text-center">
 	      	<div class="col-md-6">
 	      	<h2>Courier</h2>
-	      		<img src="<?= __SHOP__ ?>assets/images/pengiriman.png" alt="Logo Courier" class="img-responsive" style="margin: auto;">
+	      		<img src="<?= __SHOP__ ?>assets/images/pengirimans.png" alt="Logo Courier" class="img-responsive" style="margin: auto;">
 	      	</div>
 	      	<div class="col-md-6">
 	      	<h2>Bank</h2>
-	      		<img src="<?= __SHOP__ ?>assets/images/logo-bank.png" alt="Logo Courier" class="img-responsive" style="margin: auto;">
+	      		<img src="<?= __SHOP__ ?>assets/images/logo-banks.png" alt="Logo Courier" class="img-responsive" style="margin: auto;">
 	      	</div>
 	      </div>
 

@@ -19,12 +19,11 @@
     	<thead>
     		<tr>
     			<th>ID User</th>
-    			<th>Username</th>
-    			<th>Fullname</th>
+    			<th>Nama Lengkap</th>
     			<th>Email</th>
-    			<th>Address</th>
-    			<th>Zip Code</th>
-    			<th>Phone Number</th>
+    			<th>Alamat</th>
+    			<th>Kode Pos</th>
+    			<th>Telepon</th>
     			<th>Member</th>
     			<th>Actions</th>
     		</tr>
@@ -33,7 +32,6 @@
     	<?php foreach ($all_users as $data) { ?>
     		<tr <?php if ($data['status'] != 1): ?> class="danger" <?php endif ?>>
     			<td><?= $data['id_user'] ?></td>
-    			<td><?= $data['username'] ?></td>
     			<td><?= $data['firstname'] .' '. $data['lastname'] ?></td>
     			<td><?= $data['email'] ?></td>
     			<td><?= $data['address'] ?></td>

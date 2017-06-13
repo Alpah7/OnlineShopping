@@ -135,7 +135,7 @@
 				  data: data,
 				  xkey: 'm',
 				  ykeys: ['a'],
-				  labels: ['Transaction'],
+				  labels: ['Total Transaksi'],
 				  xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
 				    var month = months[x.getMonth()];
 				    return month;
@@ -160,7 +160,7 @@
 				  data: data,
 				  xkey: 'm',
 				  ykeys: ['a', 'b'],
-				  labels: ['Gross Income', 'Net Income'],
+				  labels: ['Pendapatan Bersih', 'Pendapatan Kotor'],
 				   xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
 				    var month = months[x.getMonth()];
 				    return month;

@@ -6,7 +6,7 @@
           <div class="panel-body users">
             <i class="fa fa-users fa-3x"></i> &nbsp; <span class="counter"><?= $num_users ?></span>
           </div>
-          <div class="panel-footer">Total Users</div>
+          <div class="panel-footer">Total User</div>
         </div>
      </div>
      <div class="col-md-3">
@@ -14,7 +14,7 @@
           <div class="panel-body cart">
             <i class="fa fa-shopping-cart fa-3x"></i> &nbsp; <span class="counter"><?= $num_shopping_cart ?></span>
           </div>
-          <div class="panel-footer">Shopping Cart</div>
+          <div class="panel-footer">Total Pemesanan</div>
         </div>
      </div>
      <div class="col-md-3">

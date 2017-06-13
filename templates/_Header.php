@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="<?= __SHOP__ ?>assets/dataTables.bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Acme|Love+Ya+Like+A+Sister|Special+Elite" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= __SHOP__ ?>assets/ihover.css">
+    <link rel="stylesheet" type="text/css" href="<?= __SHOP__ ?>assets/custom.css">
    <style>
    	body {
   	  padding-top: 50px;

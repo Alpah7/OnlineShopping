@@ -6,15 +6,15 @@
 	<table id="table_order" class="table table-bordered table-hover table-striped small">
 		<thead>
 			<tr>
-				<th class="text-center">ORDER ID</th>
-				<th class="text-center">Product Name</th>
-				<th class="text-center">Qty</th>
-				<th class="text-center">Size</th>
-				<th class="text-center">Account</th>
-				<th class="text-center">Amount</th>
-				<th class="text-center">Tax</th>
-				<th class="text-center">Total Shipping</th>
-				<th class="text-center">Order Status</th>
+				<th class="text-center">ID Order</th>
+				<th class="text-center">Nama Produk</th>
+				<th class="text-center">Jumlah</th>
+				<th class="text-center">Ukuran</th>
+				<th class="text-center">Nama Pembeli</th>
+				<th class="text-center">Total Belanja</th>
+				<th class="text-center">Pajak</th>
+				<th class="text-center">Total Pembayaran</th>
+				<th class="text-center">Status Order</th>
 			</tr>
 		</thead>
 		<tbody>

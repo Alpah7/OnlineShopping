@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -18,8 +18,8 @@
       <?php }else{ ?>
           <li class="active"><a href="<?= __SHOP__?>">Beranda</a></li>
       <?php } ?>
-          <li><a href="#">Tentang Kami</a></li>
-          <li><a href="#">Kontak Kami</a></li>
+          <li><a href="about.php">Tentang Kami</a></li>
+          <li><a href="contact.php">Kontak Kami</a></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Tips? <span class="caret"></span></a>
           <ul class="dropdown-menu">
               <li><a href="how-to-order-item.php">Belanja</a></li>
@@ -43,18 +43,18 @@
     <?php if (!empty($_SESSION['users'])) { ?>
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart"></i> Cart (<?= $cart->cart_count($_SESSION['users']) ?>) <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart"></i> Keranjang (<?= $cart->cart_count($_SESSION['users']) ?>) <span class="caret"></span></a>
           <div class="dropdown-menu dropdown-cart" role="menu">
           <?php if ($cart->cart_count($_SESSION['users']) < 1): ?>
-            <p class="text-center">-- Cart is empty --</p>
+            <p class="text-center">-- Keranjang Belanja Kosong --</p>
           <?php else: ?>
             <table class="table table-condensed">
             <thead>
               <tr>
-                <th>Item Name</th>
-                <th>Size</th>
-                <th>QTY</th>
-                <th>Price</th>
+                <th>Nama Barang</th>
+                <th>Ukuran</th>
+                <th>Jumlah</th>
+                <th>Harga</th>
                 <th>&nbsp;</th>
               </tr>
             </thead>
@@ -69,14 +69,14 @@
               </tr>
             <?php } ?>
               <tr>
-                <td colspan="5" align="center"><a href="cart.php">View All Cart Item</a></td>
+                <td colspan="5" align="center"><a href="cart.php">Lihat Keranjang</a></td>
               </tr>
             </tbody>
             </table>
           <?php endif; ?>
           </div>
       </li>
-        <li><p class="navbar-text">Sing in as </p></li>
+        <li><p class="navbar-text">Masuk Sebagai </p></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= ucfirst($_SESSION['firstname']) ?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -84,7 +84,7 @@
             <li><a href="profile.php?hal=ganti_password">Ganti Password</a></li>
             <li><a href="profile.php?page=ganti_foto_profil">Ganti Foto Profil</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="logout.php">Keluar</a></li>
           </ul>
         </li>
     </ul>
@@ -97,8 +97,8 @@
         <div class="form-group">
           <input type="password" placeholder="Password" class="form-control" name="password">
         </div>
-        <input type="submit" name="login" value="Sign In" class="btn btn-success">
-        <a href="signup.php" class="btn btn-link"> Sign Up</a>
+        <input type="submit" name="login" value="Login" class="btn btn-success">
+        <a href="signup.php" class="btn btn-link"> Daftar</a>
       </form>
     </div>
     <?php } ?>
